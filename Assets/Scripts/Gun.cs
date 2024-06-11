@@ -48,14 +48,9 @@ public class Gun : MonoBehaviour
                 if (currentAmmo == 0)
                 {
                     StartCoroutine(Reload());
-                    if(totalAmmo == 0)
-                    {
-                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
-                    }
                 }
                 
-            }
-            
+            } 
         }
         else //reduce ammo if player shoots the air
         {
@@ -70,6 +65,10 @@ public class Gun : MonoBehaviour
                 StartCoroutine(Reload()); //reload function runs
                 
             }
+        }
+        if (totalAmmo == 0 && currentAmmo == 0)
+        {
+            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
         }
 
     }
@@ -102,7 +101,11 @@ public class Gun : MonoBehaviour
 
             
         }
-        
+        if (totalAmmo == 0 && currentAmmo == 0)
+        {
+            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
+        }
+
     }
 
 
