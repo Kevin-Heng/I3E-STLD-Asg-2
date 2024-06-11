@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI totalAmmoText; //text to show total ammo available
 
     //Gun ammo
-    public static int totalAmmo = 120; //total ammo that is stored at the start of the game
+    public static int totalAmmo = 0; //total ammo that is stored at the start of the game
     public static int currentAmmo; //set to 0 at the start
     public static int magazineAmmo = 30; //total of 30 bullets for one magazine, max amount for currentAmmo
 
@@ -30,6 +30,7 @@ public class Gun : MonoBehaviour
 
     public AudioClip gunShot;
     public AudioClip gunReload;
+    public AudioClip emptyMag;
 
 
     void Shoot()
@@ -41,12 +42,18 @@ public class Gun : MonoBehaviour
             {
                 currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
                 currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
+                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact,2f); //remove the variable from hierarchy 2s after the particle effect finished
-                if(currentAmmo == 0)
+                if (currentAmmo == 0)
                 {
                     StartCoroutine(Reload());
+                    if(totalAmmo == 0)
+                    {
+                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
+                    }
                 }
+                
             }
             
         }
@@ -56,6 +63,7 @@ public class Gun : MonoBehaviour
             {
                 currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
                 currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
+                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
             }
             else //auto reload when current ammo reaches 0
             {
@@ -89,9 +97,10 @@ public class Gun : MonoBehaviour
                 }
                 currentAmmoText.text = currentAmmo.ToString(); //update on screen
                 totalAmmoText.text = totalAmmo.ToString(); //update on screen
-                
+                isReloading = false;
             }
-            isReloading = false;
+
+            
         }
         
     }
@@ -112,7 +121,7 @@ public class Gun : MonoBehaviour
         {
             nextTimeToShoot = Time.time + 1/fireRate; //this var increases as player continues to shoot and, shots fired are constant
             Shoot();
-            AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
+            
         }
         if (Input.GetKeyDown(KeyCode.R) && !isReloading) //press r to reload gun
         {
