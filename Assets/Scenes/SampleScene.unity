@@ -3086,6 +3086,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 6bc67cda0faef6a42a97ff1a49f22295, type: 3}
     - target: {fileID: 7298126848909071217, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: emptyMag
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
+    - target: {fileID: 7298126848909071217, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: bulletHit
       value: 
       objectReference: {fileID: 8716891186689326271, guid: 56d82db0c0a764840a37a590e0fef73f, type: 3}

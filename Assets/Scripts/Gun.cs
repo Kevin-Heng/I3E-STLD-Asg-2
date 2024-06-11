@@ -38,39 +38,42 @@ public class Gun : MonoBehaviour
         RaycastHit hitInfo;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo)) //reduce ammo count if player hits item
         {
-            if(currentAmmo > 0) 
+            if(currentAmmo > 0) //enough ammo to shoot
             {
                 currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
                 currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
                 AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact,2f); //remove the variable from hierarchy 2s after the particle effect finished
-                if (currentAmmo == 0)
+                if (currentAmmo == 0) //magazine is empty
                 {
-                    StartCoroutine(Reload());
+                    StartCoroutine(Reload()); //reload function runs
+                    if (totalAmmo == 0 && currentAmmo == 0)  //no ammo at all
+                    {
+                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
+                    }
                 }
                 
             } 
         }
         else //reduce ammo if player shoots the air
         {
-            if (currentAmmo > 0)
+            if (currentAmmo > 0)//enough ammo to shoot
             {
                 currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
                 currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
                 AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
+                if (currentAmmo == 0) //magazine is empty
+                {
+                    StartCoroutine(Reload()); //reload function runs
+                    if (totalAmmo == 0 && currentAmmo == 0)  //no ammo at all
+                    {
+                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
+                    }
+                }
             }
-            else //auto reload when current ammo reaches 0
-            {
-                StartCoroutine(Reload()); //reload function runs
-                
-            }
-        }
-        if (totalAmmo == 0 && currentAmmo == 0)
-        {
-            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
-        }
 
+        }
     }
 
    IEnumerator Reload() //reload function such that there is a reload time of 2s
@@ -101,11 +104,16 @@ public class Gun : MonoBehaviour
 
             
         }
+
+
+    }
+
+    void NoAmmo()
+    {
         if (totalAmmo == 0 && currentAmmo == 0)
         {
             AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
         }
-
     }
 
 
@@ -122,13 +130,18 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading) //can hold left click to shoot, shoot function activates in intervals
         {
-            nextTimeToShoot = Time.time + 1/fireRate; //this var increases as player continues to shoot and, shots fired are constant
+            nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
             Shoot();
-            
+
         }
         if (Input.GetKeyDown(KeyCode.R) && !isReloading) //press r to reload gun
         {
             StartCoroutine(Reload());
+        }
+
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.R))
+        {
+            NoAmmo();
         }
     }
 }
