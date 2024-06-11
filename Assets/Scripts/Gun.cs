@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
 
     //Gun effects
     public GameObject bulletHit; //particle effect when bullet hits an object
+    public ParticleSystem muzzleFlash;
 
     //Gun reload
     float reloadTime = 1.5f;
@@ -53,6 +54,7 @@ public class Gun : MonoBehaviour
                         AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
                     }
                 }
+                muzzleFlash.Play();
                 
             } 
         }
@@ -71,8 +73,9 @@ public class Gun : MonoBehaviour
                         AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
                     }
                 }
+                muzzleFlash.Play();
             }
-
+            
         }
     }
 
