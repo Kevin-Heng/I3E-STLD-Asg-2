@@ -37,17 +37,17 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading) //can hold left click to shoot, shoot function activates in intervals
         {
             nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
-            GameManager.Instance.Shoot(fpsCam, gunShot, emptyMag, gunReload, bulletHit, muzzleFlash, reloadTime, isReloading);
+            GameManager.Instance.Shoot(fpsCam, gunShot, emptyMag, gunReload, bulletHit, muzzleFlash, reloadTime, isReloading); //shoot gun
 
         }
         if (Input.GetKeyDown(KeyCode.R) && !isReloading) //press r to reload gun
         {
-            StartCoroutine(GameManager.Instance.Reload(gunReload, fpsCam, reloadTime, isReloading));
+            StartCoroutine(GameManager.Instance.Reload(gunReload, fpsCam, reloadTime, isReloading)); //reload gun
         }
 
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.R)) //press left click or R key once
         {
-            GameManager.Instance.NoAmmo(emptyMag, fpsCam);
+            GameManager.Instance.NoAmmo(emptyMag, fpsCam); //play no ammo sound
         }
     }
 }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    //----------------------------------- Gun ----------------------------------------// 
     //Ammo texts
     public TextMeshProUGUI currentAmmoText; //text to show current ammo in gun
     public TextMeshProUGUI totalAmmoText; //text to show total ammo available
@@ -17,20 +18,26 @@ public class GameManager : MonoBehaviour
     public static int currentAmmo; //set to 0 at the start
     public static int magazineAmmo = 30; //total of 30 bullets for one magazine, max amount for currentAmmo
 
+    //--------------------------------------------------------------------------------// 
 
+
+    //function to ensure there is only one game manager
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null) //start: no game manager
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Instance = this; //set game manager
+            DontDestroyOnLoad(gameObject); //items in game manager are not destroyed in the next scene
         }
-        else if (Instance != null && Instance != this)
+        else if (Instance != null && Instance != this) //when enter new scene, new game manager is created, means there is a game manager and the game manager is not the current one
         {
-            Destroy(gameObject);
+            Destroy(gameObject); //destroy the new one
         }
 
     }
+
+    //----------------------------------- Gun ----------------------------------------// 
+    //Function to shoot gun
     public void Shoot(Transform fpsCam, AudioClip gunShot, AudioClip emptyMag, AudioClip gunReload,GameObject bulletHit, ParticleSystem muzzleFlash, float reloadTime, bool isReloading)
     {
         RaycastHit hitInfo;
@@ -108,6 +115,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //function when there is no ammo at all
     public void NoAmmo(AudioClip emptyMag, Transform fpsCam)
     {
         if (totalAmmo == 0 && currentAmmo == 0)
@@ -115,6 +123,8 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
         }
     }
+
+    //--------------------------------------------------------------------------------//
 
     // Start is called before the first frame update
     void Start()
