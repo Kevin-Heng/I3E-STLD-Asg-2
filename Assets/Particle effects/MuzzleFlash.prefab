@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: m_Name
-      value: WFXMR_MF FPS RIFLE2 Variant
+      value: MuzzleFlash
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: m_LocalScale.x
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: lengthInSec
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: lengthInSec
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: lengthInSec
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: cdf14baff693fbc439f8c859529a63a6, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
