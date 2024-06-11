@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
     float reloadTime = 1.5f;
     bool isReloading = false;
 
+    //Gun audio
     public AudioClip gunShot;
     public AudioClip gunReload;
     public AudioClip emptyMag;
