@@ -35,92 +35,40 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     //----------------------------------- Gun ----------------------------------------// 
     //Function to shoot gun
-    public void Shoot(Transform fpsCam, AudioClip gunShot, AudioClip emptyMag, AudioClip gunReload,GameObject bulletHit, ParticleSystem muzzleFlash, float reloadTime, bool isReloading)
+    public void ReduceAmmo() //function to reduce ammo when shooting
     {
-        RaycastHit hitInfo;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo)) //reduce ammo count if player hits item
-        {
-            if (currentAmmo > 0) //enough ammo to shoot
-            {
-                currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
-                currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
-                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
-                GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
-                Destroy(bulletImpact, 2f); //remove the variable from hierarchy 2s after the particle effect finished
-                if (currentAmmo == 0) //magazine is empty
-                {
-                    StartCoroutine(Reload(gunReload, fpsCam, reloadTime, isReloading)); //reload function runs
-                    if (totalAmmo == 0 && currentAmmo == 0)  //no ammo at all
-                    {
-                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
-                    }
-                }
-                muzzleFlash.Play();
-
-            }
-        }
-        else //reduce ammo if player shoots the air
-        {
-            if (currentAmmo > 0)//enough ammo to shoot
-            {
-                currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
-                currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen
-                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, 0.15f);
-                if (currentAmmo == 0) //magazine is empty
-                {
-                    StartCoroutine(Reload(gunReload, fpsCam, reloadTime, isReloading)); //reload function runs
-                    if (totalAmmo == 0 && currentAmmo == 0)  //no ammo at all
-                    {
-                        AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f); //emptyMag sound plays
-                    }
-                }
-                muzzleFlash.Play();
-            }
-
-        }
+        currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
+        currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen      
     }
 
-    public IEnumerator Reload(AudioClip gunReload, Transform fpsCam, float reloadTime, bool isReloading) //reload function such that there is a reload time of 2s
+    //function to reload gun
+    public void ReloadGun()
     {
-        if (currentAmmo < magazineAmmo) //can only reload when current ammo is less than the total ammo for one magazine
+        int difference = magazineAmmo - currentAmmo; //calculate how much ammo is needed to get current ammo back to 30
+        if (difference > totalAmmo) //check if there is enough ammo to increase current ammo back to 30, e.g. current ammo = 20, difference = 10 and total ammo = 5
         {
-            if (totalAmmo > 0) //reload gun if there is enough ammo
-            {
-                AudioSource.PlayClipAtPoint(gunReload, fpsCam.position, 1f);
-                isReloading = true; //player is reloading
-                yield return new WaitForSeconds(reloadTime); //pauses the function for 2s which acts reload time, then the code below this statement will run
-
-                int difference = magazineAmmo - currentAmmo; //calculate how much ammo is needed to get current ammo back to 30
-                if (difference > totalAmmo) //check if there is enough ammo to increase current ammo back to 30, e.g. current ammo = 20, difference = 10 and total ammo = 5
-                {
-                    currentAmmo += totalAmmo; //increase current ammo by the remainder ammo
-                    totalAmmo -= totalAmmo; //total ammo is now 0
-                }
-                else
-                {
-                    totalAmmo -= difference; //reduce total ammo by the required amount to increase current ammo back to 30
-                    currentAmmo += difference; //current ammo increase back to 30
-                }
-                currentAmmoText.text = currentAmmo.ToString(); //update on screen
-                totalAmmoText.text = totalAmmo.ToString(); //update on screen
-                isReloading = false;
-            }
-
-
+            currentAmmo += totalAmmo; //increase current ammo by the remainder ammo
+            totalAmmo -= totalAmmo; //total ammo is now 0
         }
-
-
+        else
+        {
+            totalAmmo -= difference; //reduce total ammo by the required amount to increase current ammo back to 30
+            currentAmmo += difference; //current ammo increase back to 30
+        }
+        currentAmmoText.text = currentAmmo.ToString(); //update on screen
+        totalAmmoText.text = totalAmmo.ToString(); //update on screen
     }
 
-    //function when there is no ammo at all
+    
+
+    //function for when there is no ammo at all
     public void NoAmmo(AudioClip emptyMag, Transform fpsCam)
     {
         if (totalAmmo == 0 && currentAmmo == 0)
         {
-            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 1f);
+            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.75f);
         }
     }
 
