@@ -57,8 +57,14 @@ public class Gun : Equip
                 muzzleFlash.Play();
                 if (hitInfo.transform.CompareTag("Enemy"))
                 {
-                    Debug.Log("enemy hit");
-                    DamageEnemy(enemy);
+                    enemy.enemyHp -= damage;
+                    Debug.Log(enemy.enemyHp);
+                    if (enemy.enemyHp == 0)
+                    {
+                        Destroy(enemy.gameObject);
+
+                    }
+                    
                 }
             }
             
@@ -121,16 +127,7 @@ public class Gun : Equip
         }
     }
 
-    void DamageEnemy(Enemy enemy)
-    {
-        enemy.enemyHp -= damage;
-        Debug.Log(enemy.enemyHp);
-        if(enemy.enemyHp == 0)
-        {
-            Destroy(enemy.gameObject);
-
-        }
-    }
+    
 
 
 
