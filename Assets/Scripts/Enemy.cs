@@ -21,7 +21,9 @@ public class Enemy : MonoBehaviour
 
     public GameObject projectile;
     public Transform projectileSpawn;
-    
+    GameObject spawnProjectile;
+
+    public int enemyHp = 50;
 
     private void Awake()
     {
@@ -73,11 +75,11 @@ public class Enemy : MonoBehaviour
 
         if (!attack)
         {
-            GameObject spawnProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+            spawnProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
             Rigidbody projectileRb = spawnProjectile.GetComponent<Rigidbody>();
 
             projectileRb.AddForce(transform.forward * 18, ForceMode.Impulse);
-            projectileRb.AddForce(transform.up * 5, ForceMode.Impulse);
+            projectileRb.AddForce(transform.up * 4, ForceMode.Impulse);
 
             attack = true;
             StartCoroutine(ResetAttack());
@@ -86,13 +88,15 @@ public class Enemy : MonoBehaviour
     }
 
 
-
-
     IEnumerator ResetAttack()
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
         attack = false;
     }
+
+
+
+
 
     // Start is called before the first frame update
     void Start()

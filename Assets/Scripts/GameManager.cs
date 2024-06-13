@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    //----------------------------------- Player ----------------------------------------// 
+    public int playerHp = 100;
+
     //----------------------------------- Gun ----------------------------------------// 
 
     //Gun ammo
@@ -31,6 +34,11 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void ReducePlayerHp(int damage)
+    {
+        playerHp -= damage;
+    }
+
     //----------------------------------- Gun ----------------------------------------// 
     //Function to shoot gun
     public void ReduceAmmo() //function to reduce ammo when shooting

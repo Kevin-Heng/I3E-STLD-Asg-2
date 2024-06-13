@@ -29,7 +29,9 @@ public class Gun : Equip
     public AudioClip gunReload;
     public AudioClip emptyMag;
 
+    public Enemy enemy;
     public bool isEquipped = false;
+    int damage = 10;
     void Shoot()
     {
         RaycastHit hitInfo;
@@ -53,8 +55,13 @@ public class Gun : Equip
                     }
                 }
                 muzzleFlash.Play();
-
+                if (hitInfo.transform.CompareTag("Enemy"))
+                {
+                    Debug.Log("enemy hit");
+                    DamageEnemy(enemy);
+                }
             }
+            
         }
         else //reduce ammo if player shoots the air
         {
@@ -114,7 +121,16 @@ public class Gun : Equip
         }
     }
 
-    
+    void DamageEnemy(Enemy enemy)
+    {
+        enemy.enemyHp -= damage;
+        Debug.Log(enemy.enemyHp);
+        if(enemy.enemyHp == 0)
+        {
+            Destroy(enemy.gameObject);
+
+        }
+    }
 
 
 

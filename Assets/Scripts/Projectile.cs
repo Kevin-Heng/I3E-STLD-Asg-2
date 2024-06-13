@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Rigidbody rb;
-    void Shoot()
+    public GameObject projectile;
+    int damage = 10;
+    private void OnCollisionEnter(Collision collision)
     {
-        rb.AddForce(transform.forward* 20, ForceMode.Impulse);
-        rb.AddForce(transform.up * 10, ForceMode.Impulse);
+        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("hit");
+            Destroy(projectile);
+            GameManager.Instance.ReducePlayerHp(damage);
+            Debug.Log(GameManager.Instance.playerHp);
+
+        }
+        else
+        {
+            Destroy(projectile, 1.25f);
+        }
     }
 
     // Start is called before the first frame update
@@ -20,9 +32,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Shoot();
-        }
+
     }
 }
