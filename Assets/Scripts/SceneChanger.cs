@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public int sceneIndex;
+    public int sceneIndex; 
     private void OnCollisionEnter(Collision collision)
     {
         SceneManager.LoadScene(sceneIndex);

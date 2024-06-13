@@ -9,15 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     //----------------------------------- Gun ----------------------------------------// 
-    //Ammo texts
-    public TextMeshProUGUI currentAmmoText; //text to show current ammo in gun
-    public TextMeshProUGUI totalAmmoText; //text to show total ammo available
 
     //Gun ammo
     public static int totalAmmo = 120; //total ammo that is stored at the start of the game
     public static int currentAmmo; //set to 0 at the start
     public static int magazineAmmo = 30; //total of 30 bullets for one magazine, max amount for currentAmmo
-
     //--------------------------------------------------------------------------------// 
 
 
@@ -39,8 +35,7 @@ public class GameManager : MonoBehaviour
     //Function to shoot gun
     public void ReduceAmmo() //function to reduce ammo when shooting
     {
-        currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
-        currentAmmoText.text = currentAmmo.ToString(); //update current ammo count on screen      
+        currentAmmo--; //ammo reduce by 1 when 1 bullet is shot     
     }
 
     //function to reload gun
@@ -57,8 +52,6 @@ public class GameManager : MonoBehaviour
             totalAmmo -= difference; //reduce total ammo by the required amount to increase current ammo back to 30
             currentAmmo += difference; //current ammo increase back to 30
         }
-        currentAmmoText.text = currentAmmo.ToString(); //update on screen
-        totalAmmoText.text = totalAmmo.ToString(); //update on screen
     }
 
     
@@ -68,23 +61,23 @@ public class GameManager : MonoBehaviour
     {
         if (totalAmmo == 0 && currentAmmo == 0)
         {
-            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.75f);
+            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.5f);
         }
     }
+
+    
 
     //--------------------------------------------------------------------------------//
 
     // Start is called before the first frame update
     void Start()
     {
-        currentAmmo += magazineAmmo; //start with 30 ammo
-        currentAmmoText.text = currentAmmo.ToString(); //show starting amt on screen
-        totalAmmoText.text = totalAmmo.ToString(); //show starting amt on screen
+        currentAmmo += magazineAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
