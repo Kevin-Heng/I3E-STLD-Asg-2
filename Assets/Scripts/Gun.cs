@@ -29,9 +29,11 @@ public class Gun : Equip
     public AudioClip gunReload;
     public AudioClip emptyMag;
 
-    public Enemy enemy;
+
     public bool isEquipped = false;
     int damage = 10;
+
+
     void Shoot()
     {
         RaycastHit hitInfo;
@@ -57,8 +59,9 @@ public class Gun : Equip
                 muzzleFlash.Play();
                 if (hitInfo.transform.CompareTag("Enemy"))
                 {
-                    enemy.enemyHp -= damage;
+                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
                     Debug.Log(enemy.enemyHp);
+                    enemy.enemyHp -= damage;
                     if (enemy.enemyHp == 0)
                     {
                         Destroy(enemy.gameObject);

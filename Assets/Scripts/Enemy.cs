@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask Player;
+    [SerializeField] Transform fpsCam;
 
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -22,8 +23,10 @@ public class Enemy : MonoBehaviour
     public GameObject projectile;
     public Transform projectileSpawn;
     GameObject spawnProjectile;
+    public int forwardForce;
+    public int upwardForce;
 
-    public int enemyHp = 50;
+    public int enemyHp;
 
     private void Awake()
     {
@@ -76,10 +79,11 @@ public class Enemy : MonoBehaviour
         if (!attack)
         {
             spawnProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+
             Rigidbody projectileRb = spawnProjectile.GetComponent<Rigidbody>();
 
-            projectileRb.AddForce(transform.forward * 18, ForceMode.Impulse);
-            projectileRb.AddForce(transform.up * 4, ForceMode.Impulse);
+            projectileRb.AddForce(transform.forward * forwardForce, ForceMode.Impulse);
+            projectileRb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
 
             attack = true;
             StartCoroutine(ResetAttack());

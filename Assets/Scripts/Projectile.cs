@@ -6,6 +6,12 @@ public class Projectile : MonoBehaviour
 {
     public GameObject projectile;
     int damage = 10;
+    public AudioClip playerHit;
+    public AudioClip playerDie;
+    Transform fpsCam;
+    public float t;
+
+  
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -13,7 +19,11 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("hit");
             Destroy(projectile);
-            GameManager.Instance.ReducePlayerHp(damage);
+            GameManager.Instance.ReducePlayerHp(damage,playerHit,fpsCam);
+            if(GameManager.Instance.playerHp == 0)
+            {
+                AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f);
+            }
             Debug.Log(GameManager.Instance.playerHp);
 
         }
@@ -26,8 +36,12 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(fpsCam == null)
+        {
+            fpsCam = Camera.main.transform;
+        }
     }
+
 
     // Update is called once per frame
     void Update()

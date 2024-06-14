@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 332.42752, y: -3.4956925, z: 16.015846}
-  m_LocalScale: {x: 0.7637086, y: 0.7637086, z: 0.7637086}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7192845124812347348}
+  playerHit: {fileID: 8300000, guid: 46eee5b383af081419d7b81bb282a8a6, type: 3}
+  playerDie: {fileID: 8300000, guid: f9c070f5cbc8c6b45a1383834b751ac9, type: 3}
 --- !u!135 &934957123635311309
 SphereCollider:
   m_ObjectHideFlags: 0

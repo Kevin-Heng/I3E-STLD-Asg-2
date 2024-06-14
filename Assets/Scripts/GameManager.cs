@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void ReducePlayerHp(int damage)
+    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam)
     {
         playerHp -= damage;
+        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.75f);
     }
 
     //----------------------------------- Gun ----------------------------------------// 
