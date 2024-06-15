@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4183251}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -123,6 +123,70 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!850595691 &4183251
+LightingSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 6
+  m_GIWorkflowMode: 1
+  m_EnableBakedLightmaps: 1
+  m_EnableRealtimeLightmaps: 0
+  m_RealtimeEnvironmentLighting: 1
+  m_BounceScale: 1
+  m_AlbedoBoost: 1
+  m_IndirectOutputScale: 1
+  m_UsingShadowmask: 1
+  m_BakeBackend: 1
+  m_LightmapMaxSize: 1024
+  m_BakeResolution: 40
+  m_Padding: 2
+  m_LightmapCompression: 3
+  m_AO: 0
+  m_AOMaxDistance: 1
+  m_CompAOExponent: 1
+  m_CompAOExponentDirect: 0
+  m_ExtractAO: 0
+  m_MixedBakeMode: 2
+  m_LightmapsBakeMode: 1
+  m_FilterMode: 1
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+  m_ExportTrainingData: 0
+  m_TrainingDataDestination: TrainingData
+  m_RealtimeResolution: 2
+  m_ForceWhiteAlbedo: 0
+  m_ForceUpdates: 0
+  m_FinalGather: 0
+  m_FinalGatherRayCount: 256
+  m_FinalGatherFiltering: 1
+  m_PVRCulling: 1
+  m_PVRSampling: 1
+  m_PVRDirectSampleCount: 32
+  m_PVRSampleCount: 512
+  m_PVREnvironmentSampleCount: 256
+  m_PVREnvironmentReferencePointCount: 2048
+  m_LightProbeSampleCountMultiplier: 4
+  m_PVRBounces: 2
+  m_PVRMinBounces: 2
+  m_PVREnvironmentImportanceSampling: 1
+  m_PVRFilteringMode: 1
+  m_PVRDenoiserTypeDirect: 1
+  m_PVRDenoiserTypeIndirect: 1
+  m_PVRDenoiserTypeAO: 1
+  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeIndirect: 0
+  m_PVRFilterTypeAO: 0
+  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusIndirect: 5
+  m_PVRFilteringGaussRadiusAO: 2
+  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+  m_PVRFilteringAtrousPositionSigmaIndirect: 2
+  m_PVRFilteringAtrousPositionSigmaAO: 1
+  m_PVRTiledBaking: 0
+  m_NumRaysToShootPerTexel: -1
+  m_RespectSceneVisibilityWhenBakingGI: 0
 --- !u!1001 &130549195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: gunRifle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 2078118267043180630, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -745,10 +813,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 384377582}
+      addedObject: {fileID: 384377583}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 384377583}
+      addedObject: {fileID: 384377584}
   m_SourcePrefab: {fileID: 100100000, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
 --- !u!4 &350049553 stripped
 Transform:
@@ -765,29 +833,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9bbfe23cde0bbd4c850ac39320b9566, type: 3}
   m_PrefabInstance: {fileID: 294622850}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &384377582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384377580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1138e3d255bc42b42b842303aba4f7b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 384377580}
-  itemParent: {fileID: 1879220740}
-  fpsCam: {fileID: 1389987806}
-  currentAmmoText: {fileID: 1621540704}
-  totalAmmoText: {fileID: 135027840}
-  bulletHit: {fileID: 8716891186689326271, guid: 56d82db0c0a764840a37a590e0fef73f, type: 3}
-  muzzleFlash: {fileID: 1658159017}
-  gunShot: {fileID: 8300000, guid: 6bc67cda0faef6a42a97ff1a49f22295, type: 3}
-  gunReload: {fileID: 8300000, guid: 322a95b1577ad3d48b2629e8abcee631, type: 3}
-  emptyMag: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
-  isEquipped: 0
 --- !u!65 &384377583
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -809,6 +854,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &384377584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384377580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bb34e723c96f748b11e83dfd9ec97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsCam: {fileID: 1389987806}
+  currentAmmoText: {fileID: 1621540704}
+  totalAmmoText: {fileID: 135027840}
+  fireRate: 10
+  bulletHit: {fileID: 8716891186689326271, guid: 56d82db0c0a764840a37a590e0fef73f, type: 3}
+  muzzleFlash: {fileID: 8458633902466592635, guid: ad2fe70aad920034abc4a59c2a93bf58, type: 3}
+  reloadTime: 1.5
+  isReloading: 0
+  gunShot: {fileID: 8300000, guid: 6bc67cda0faef6a42a97ff1a49f22295, type: 3}
+  gunReload: {fileID: 8300000, guid: 322a95b1577ad3d48b2629e8abcee631, type: 3}
+  emptyMag: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
+  damage: 10
+  item: {fileID: 384377580}
+  itemParent: {fileID: 1879220740}
+  isEquipped: 0
+  totalAmmo: 120
+  currentAmmo: 0
+  magazineAmmo: 30
 --- !u!1 &652167328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3752,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHp: 100
+  totalAmmo: 120
+  currentAmmo: 0
+  magazineAmmo: 30
+  weaponsList: []
 --- !u!4 &1388533611
 Transform:
   m_ObjectHideFlags: 0
@@ -4226,11 +4305,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!198 &1658159017 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8458633902466592635, guid: ad2fe70aad920034abc4a59c2a93bf58, type: 3}
-  m_PrefabInstance: {fileID: 1340126257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1658159019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8458633902451386939, guid: ad2fe70aad920034abc4a59c2a93bf58, type: 3}
@@ -4251,6 +4325,10 @@ PrefabInstance:
     - target: {fileID: 5566982882491771903, guid: 753efee260a9710459248b9d59968d40, type: 3}
       propertyPath: m_Name
       value: Red enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566982882491771903, guid: 753efee260a9710459248b9d59968d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7896166578676162733, guid: 753efee260a9710459248b9d59968d40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4506,6 +4584,10 @@ PrefabInstance:
     - target: {fileID: 5566982882491771903, guid: 753efee260a9710459248b9d59968d40, type: 3}
       propertyPath: m_Name
       value: Red enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566982882491771903, guid: 753efee260a9710459248b9d59968d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7896166578676162733, guid: 753efee260a9710459248b9d59968d40, type: 3}
       propertyPath: m_LocalPosition.x

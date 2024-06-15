@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour
     //----------------------------------- Gun ----------------------------------------// 
 
     //Gun ammo
-    public static int totalAmmo = 120; //total ammo that is stored at the start of the game
-    public static int currentAmmo; //set to 0 at the start
-    public static int magazineAmmo = 30; //total of 30 bullets for one magazine, max amount for currentAmmo
-    //--------------------------------------------------------------------------------// 
+    public int totalAmmo; //total ammo that is stored at the start of the game
+    public int currentAmmo; //set to 0 at the start
+    public int magazineAmmo; //total of 30 bullets for one magazine, max amount for currentAmmo
 
+    //--------------------------------------------------------------------------------// 
 
     //function to ensure there is only one game manager
     private void Awake()
@@ -34,21 +34,21 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam)
+    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam) //enemy projectile damage
     {
         playerHp -= damage;
-        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.75f);
+        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.6f);
     }
 
     //----------------------------------- Gun ----------------------------------------// 
     //Function to shoot gun
-    public void ReduceAmmo() //function to reduce ammo when shooting
+    public void ReduceAmmo(int currentAmmoInMag) //function to reduce ammo when shooting
     {
         currentAmmo--; //ammo reduce by 1 when 1 bullet is shot     
     }
 
     //function to reload gun
-    public void ReloadGun()
+    public void ReloadGun(int currentAmmoInMag, int magAmmo, int totalGunAmmo)
     {
         int difference = magazineAmmo - currentAmmo; //calculate how much ammo is needed to get current ammo back to 30
         if (difference > totalAmmo) //check if there is enough ammo to increase current ammo back to 30, e.g. current ammo = 20, difference = 10 and total ammo = 5
@@ -73,10 +73,23 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.5f);
         }
     }
-
-    
-
     //--------------------------------------------------------------------------------//
+
+    public List<GameObject> weaponsList;
+
+    public void SwapWeapons()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weaponsList[0].SetActive(true);
+            weaponsList[1].SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponsList[0].SetActive(false);
+            weaponsList[1].SetActive(true);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +100,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        SwapWeapons();
     }
 }

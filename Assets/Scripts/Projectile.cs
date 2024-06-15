@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     public AudioClip playerHit;
     public AudioClip playerDie;
     Transform fpsCam;
-    public float t;
 
   
     private void OnCollisionEnter(Collision collision)
