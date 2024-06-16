@@ -11,7 +11,6 @@ public class Equip : MonoBehaviour
 
     public virtual void EquipItem()
     {
-        GameManager.Instance.weaponsList.Add(item);
         item.transform.position = itemParent.transform.position;
         item.transform.rotation = itemParent.transform.rotation;
 

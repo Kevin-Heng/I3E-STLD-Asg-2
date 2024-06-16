@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour 
 {
     public static GameManager Instance;
 
@@ -34,11 +32,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam) //enemy projectile damage
-    {
-        playerHp -= damage;
-        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.6f);
-    }
 
     //----------------------------------- Gun ----------------------------------------// 
     //Function to shoot gun
@@ -63,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
 
     //function for when there is no ammo at all
     public void NoAmmo(AudioClip emptyMag, Transform fpsCam)
@@ -95,11 +88,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentAmmo += magazineAmmo;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         SwapWeapons();
+
     }
 }

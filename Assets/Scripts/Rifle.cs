@@ -16,7 +16,7 @@ public class Rifle : Gun
     {
         Shooting();
         Reloading();
-        OutOfAmmo();
-        Equipping();
+
+
     }
 }
