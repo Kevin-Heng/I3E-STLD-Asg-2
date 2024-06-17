@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour 
@@ -10,11 +11,14 @@ public class GameManager : MonoBehaviour
     public int playerHp = 100;
 
     //----------------------------------- Gun ----------------------------------------// 
+    public TextMeshProUGUI currentRifleAmmoText;
+    public TextMeshProUGUI totalRifleAmmoText;
+    public TextMeshProUGUI currentRLAmmoText;
+    public TextMeshProUGUI totalRLAmmoText;
 
-    //Gun ammo
-    public int totalAmmo; //total ammo that is stored at the start of the game
-    public int currentAmmo; //set to 0 at the start
-    public int magazineAmmo; //total of 30 bullets for one magazine, max amount for currentAmmo
+    public Rifle rifle;
+    public RocketLauncher rL;
+
 
     //--------------------------------------------------------------------------------// 
 
@@ -33,15 +37,30 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //----------------------------------- Gun ----------------------------------------// 
-    //Function to shoot gun
-    public void ReduceAmmo(int currentAmmoInMag) //function to reduce ammo when shooting
+    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam)
     {
-        currentAmmo--; //ammo reduce by 1 when 1 bullet is shot     
+        playerHp -= damage;
+        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.6f);
+    }
+    //----------------------------------- Gun ----------------------------------------// 
+
+
+    //Function to shoot gun
+    public void ReduceAmmo(ref int currentAmmo) //function to reduce ammo when shooting
+    {
+        currentAmmo--; //ammo reduce by 1 when 1 bullet is shot
+        if (rifle.isEquipped)
+        {
+            currentRifleAmmoText.text = currentAmmo.ToString();
+        }
+        else
+        {
+            currentRLAmmoText.text = rL.currentAmmo.ToString();
+        }
     }
 
     //function to reload gun
-    public void ReloadGun(int currentAmmoInMag, int magAmmo, int totalGunAmmo)
+    public void ReloadGun(ref int currentAmmo, ref int magazineAmmo, ref int totalAmmo)
     {
         int difference = magazineAmmo - currentAmmo; //calculate how much ammo is needed to get current ammo back to 30
         if (difference > totalAmmo) //check if there is enough ammo to increase current ammo back to 30, e.g. current ammo = 20, difference = 10 and total ammo = 5
@@ -54,12 +73,23 @@ public class GameManager : MonoBehaviour
             totalAmmo -= difference; //reduce total ammo by the required amount to increase current ammo back to 30
             currentAmmo += difference; //current ammo increase back to 30
         }
+        if (rifle.isEquipped)
+        {
+            currentRifleAmmoText.text = currentAmmo.ToString();
+            totalRifleAmmoText.text = totalAmmo.ToString();
+        }
+        else
+        {
+            currentRLAmmoText.text = currentAmmo.ToString();
+            totalRLAmmoText.text = totalAmmo.ToString();
+        }
+        
     }
 
 
 
     //function for when there is no ammo at all
-    public void NoAmmo(AudioClip emptyMag, Transform fpsCam)
+    public void NoAmmo(ref int currentAmmo, ref int totalAmmo, AudioClip emptyMag, Transform fpsCam)
     {
         if (totalAmmo == 0 && currentAmmo == 0)
         {
@@ -68,33 +98,54 @@ public class GameManager : MonoBehaviour
     }
     //--------------------------------------------------------------------------------//
 
-    public List<GameObject> weaponsList;
-
     public void SwapWeapons()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!rifle.isEquipped && rL.isEquipped && !rL.isReloading && Input.GetKeyDown(KeyCode.Alpha1))
         {
-            weaponsList[0].SetActive(true);
-            weaponsList[1].SetActive(false);
+            rifle.isEquipped = true;
+            rL.isEquipped = false;
+
+            rifle.gameObject.SetActive(true);
+            rL.gameObject.SetActive(false);
+
+            currentRifleAmmoText.enabled = true;
+            totalRifleAmmoText.enabled = true;
+
+            currentRLAmmoText.enabled = false;
+            totalRLAmmoText.enabled = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if(rifle.isEquipped && !rL.isEquipped && !rifle.isReloading && Input.GetKeyDown(KeyCode.Alpha2))
         {
-            weaponsList[0].SetActive(false);
-            weaponsList[1].SetActive(true);
+            rifle.isEquipped = false;
+            rL.isEquipped = true;
+
+            rifle.gameObject.SetActive(false);
+            rL.gameObject.SetActive(true);
+            currentRifleAmmoText.enabled = false;
+            totalRifleAmmoText.enabled = false;
+            currentRLAmmoText.enabled = true;
+            totalRLAmmoText.enabled = true;
         }
     }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        currentAmmo += magazineAmmo;
+        currentRifleAmmoText.text = rifle.currentAmmo.ToString();
+        totalRifleAmmoText.text = rifle.totalAmmo.ToString();
 
+        currentRLAmmoText.text = rL.currentAmmo.ToString();
+        totalRLAmmoText.text += rL.totalAmmo.ToString();
+
+        currentRLAmmoText.enabled = false;
+        totalRLAmmoText.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         SwapWeapons();
-
+        
     }
 }

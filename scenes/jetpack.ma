@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: jetpack.ma
-//Last modified: Wed, Jun 12, 2024 09:26:23 PM
+//Last modified: Mon, Jun 17, 2024 02:42:07 PM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -12,17 +12,17 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202302170737-4500172811";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "E6BEA198-4E4C-26E2-DA4F-3B8D8D2CDF59";
+fileInfo "UUID" "B12B9F58-4B79-F14A-EB44-C4B62003F47D";
 createNode transform -s -n "persp";
 	rename -uid "23DDDDDA-47BE-46F6-B162-999652583118";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 4.1132141658176655 -3.9339267820018899 17.69032046871806 ;
-	setAttr ".r" -type "double3" 15.861647230093807 7.0000000000916351 2.0027750574901626e-16 ;
+	setAttr ".t" -type "double3" -32.662244905746007 0.72275830339893332 38.498211900310274 ;
+	setAttr ".r" -type "double3" 1.4616472300937258 -41.799999999908422 1.3332734231266466e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "C46CDA40-45CF-EB08-2F7F-04952B089DBF";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 18.51436998807398;
+	setAttr ".coi" 51.215143663429664;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -6775,20 +6775,20 @@ createNode mesh -n "pCubeShape4" -p "pCube10";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "F19C7307-4FB8-46BE-988E-529071DE5DC0";
+	rename -uid "8D7D55E5-4C00-3154-68A8-99A856E47E12";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "630D7ED8-4648-439C-AA14-0A89A07333A6";
+	rename -uid "60BC8596-402B-1DDD-5AA3-F498E59FF77D";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "ABEFB4D4-46C7-8179-4623-F58210260310";
+	rename -uid "36ED7223-4E15-3FC1-E8AC-5B8F39CE42CC";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "FA16E3F3-4DE8-CC10-23F4-D6AFED04F960";
+	rename -uid "34893DF6-44DD-3FBB-981D-1EB8DF79E16A";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "DA45CD30-49F6-2DB1-1241-DB950DBC1560";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "724E052B-4148-4BFB-570C-DEA2B09146AA";
+	rename -uid "C9C7FF1D-4723-B0E9-7B6F-33A92F212DC4";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "AD68DFAF-47AC-620A-27F4-CDADD0859F60";
 	setAttr ".g" yes;
