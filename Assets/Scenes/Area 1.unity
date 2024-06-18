@@ -211,6 +211,14 @@ PrefabInstance:
       propertyPath: decreaseSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1710996597446327307, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: gunShotSoundLvl
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231267079882204088, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: gunShotSoundLvl
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 5963313975685303100, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: gun
       value: 

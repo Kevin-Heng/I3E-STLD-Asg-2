@@ -1,3 +1,9 @@
+/*
+ * Author: Kevin Heng
+ * Date: 13/06/2024
+ * Description: The Projectile class is used to handle the projectile properties when it is launched by the enemy attack
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
