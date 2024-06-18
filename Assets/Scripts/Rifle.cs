@@ -10,6 +10,10 @@ using UnityEngine;
 
 public class Rifle : Gun
 {
+    /// <summary>
+    /// To reference player capsule in inspector
+    /// </summary>
+    [SerializeField] GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +24,9 @@ public class Rifle : Gun
     // Update is called once per frame
     void Update()
     {
-        Shooting();
-        Reloading();
-        OutOfAmmo();
+        if (isEquipped)
+        {
+            player.GetComponent<Player>().UpdateGun(this);
+        }
     }
 }

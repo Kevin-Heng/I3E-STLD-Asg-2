@@ -17,6 +17,11 @@ public class RocketLauncher : Gun
     public float changeSpeed;
 
     /// <summary>
+    /// To reference player capsule in inspector
+    /// </summary>
+    [SerializeField] GameObject player;
+
+    /// <summary>
     /// Function to change player speed depending on the gun equipped
     /// </summary>
     /// <param name="player"> Reference Player class </param>
@@ -47,8 +52,9 @@ public class RocketLauncher : Gun
     // Update is called once per frame
     void Update()
     {
-        Shooting();
-        Reloading();
-        OutOfAmmo();
+        if (isEquipped)
+        {
+            player.GetComponent<Player>().UpdateGun(this);
+        }
     }
 }

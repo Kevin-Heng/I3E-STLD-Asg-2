@@ -10,7 +10,39 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// Reference Gun parent class
+    /// </summary>
+    Gun currentGun;
 
+    /// <summary>
+    /// Function to update which gun is currently equipped
+    /// </summary>
+    /// <param name="gun"> To input weapons with Gun class </param>
+    public void UpdateGun(Gun gun)
+    {
+       currentGun = gun;
+    }
+
+    /// <summary>
+    /// Player input to shoot gun (left click)
+    /// </summary>
+    void OnShoot()
+    {
+        Debug.Log("shoot");
+        currentGun.Shooting();
+        currentGun.OutOfAmmo();
+    }
+
+    /// <summary>
+    /// Player input to reload gun (R)
+    /// </summary>
+    void OnReload()
+    {
+        Debug.Log("reload");
+        currentGun.Reloading();
+        currentGun.OutOfAmmo();
+    }
 
     // Start is called before the first frame update
     void Start()
