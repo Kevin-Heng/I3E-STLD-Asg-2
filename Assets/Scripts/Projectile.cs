@@ -10,40 +10,53 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    /// <summary>
+    /// Projectile to be launched when enemy attacks
+    /// </summary>
     public GameObject projectile;
-    int damage = 10;
+    /// <summary>
+    /// Projectile damage if it hits player
+    /// </summary>
+    public int damage;
+    /// <summary>
+    /// Audio played when enemy is hit by projectile
+    /// </summary>
     public AudioClip playerHit;
+    /// <summary>
+    /// Audio played when player dies
+    /// </summary>
     public AudioClip playerDie;
+    /// <summary>
+    /// Player camera
+    /// </summary>
     Transform fpsCam;
 
   
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")) //check if projectile hits player
         {
-            Debug.Log("hit");
             Destroy(projectile);
             GameManager.Instance.ReducePlayerHp(damage,playerHit,fpsCam);
-            if(GameManager.Instance.playerHp == 0)
+            if(GameManager.Instance.playerHp <= 0) //when player hp reaches 0 and below
             {
-                AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f);
+                AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
             }
-            Debug.Log(GameManager.Instance.playerHp);
 
         }
-        else
+        else //projectile miss player
         {
-            Destroy(projectile, 1.25f);
+            Destroy(projectile, 1.25f); //remove projectile from game
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(fpsCam == null)
+        if(fpsCam == null) //since projectile game object is not in scene, this is needed to set the fpsCam
         {
-            fpsCam = Camera.main.transform;
+            fpsCam = Camera.main.transform; //set player camera
         }
     }
 
