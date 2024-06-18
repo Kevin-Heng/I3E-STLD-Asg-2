@@ -25,23 +25,12 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Player input to shoot gun (left click)
-    /// </summary>
-    void OnShoot()
-    {
-        Debug.Log("shoot");
-        currentGun.Shooting();
-        currentGun.OutOfAmmo();
-    }
-
-    /// <summary>
     /// Player input to reload gun (R)
     /// </summary>
     void OnReload()
     {
         Debug.Log("reload");
         currentGun.Reloading();
-        currentGun.OutOfAmmo();
     }
 
     // Start is called before the first frame update

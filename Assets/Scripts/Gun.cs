@@ -163,7 +163,7 @@ public class Gun : MonoBehaviour
 
     public void Shooting()
     {
-        if (Time.time >= nextTimeToShoot && !isReloading && isEquipped) //can hold left click to shoot, shoot function activates in intervals
+        if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading && isEquipped) //can hold left click to shoot, shoot function activates in intervals
         {
             nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
             Shoot(); //shoot gun
@@ -178,7 +178,8 @@ public class Gun : MonoBehaviour
     }
     public void OutOfAmmo()
     {
-        GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(0))
+            GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
     }
 
     // Start is called before the first frame update

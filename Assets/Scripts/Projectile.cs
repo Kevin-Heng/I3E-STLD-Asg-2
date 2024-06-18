@@ -38,11 +38,8 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) //check if projectile hits player
         {
             Destroy(projectile);
-            GameManager.Instance.ReducePlayerHp(damage,playerHit,fpsCam);
-            if(GameManager.Instance.playerHp <= 0) //when player hp reaches 0 and below
-            {
-                AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
-            }
+            GameManager.Instance.ReducePlayerHp(damage,playerHit, playerDie, fpsCam);
+            
 
         }
         else //projectile miss player

@@ -56,5 +56,7 @@ public class RocketLauncher : Gun
         {
             player.GetComponent<Player>().UpdateGun(this);
         }
+        Shooting();
+        OutOfAmmo();
     }
 }

@@ -28,5 +28,7 @@ public class Rifle : Gun
         {
             player.GetComponent<Player>().UpdateGun(this);
         }
+        Shooting();
+        OutOfAmmo();
     }
 }

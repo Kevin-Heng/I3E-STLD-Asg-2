@@ -77,10 +77,14 @@ public class GameManager : MonoBehaviour
     /// <param name="damage"> Damage done by enemy </param> 
     /// <param name="playerHit"> Audio to be played when hit by enemy attack </param>
     /// <param name="fpsCam"> Main camera on player capsule </param>
-    public void ReducePlayerHp(int damage, AudioClip playerHit, Transform fpsCam)
+    public void ReducePlayerHp(int damage, AudioClip playerHit, AudioClip playerDie, Transform fpsCam)
     {
         playerHp -= damage; //reduce player hp by specified damage done by enemy
         AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.6f); //audio clip to be played when hurt
+        if (playerHp <= 0) //when player hp reaches 0 and below
+        {
+            AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
+        }
     }
     //----------------------------------- Gun ----------------------------------------// 
 
