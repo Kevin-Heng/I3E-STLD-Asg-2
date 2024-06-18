@@ -107,11 +107,10 @@ public class Gun : MonoBehaviour
     public void Shooting()
     {
         if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading && isEquipped) //can hold left click to shoot, shoot function activates in intervals
-            if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading) //can hold left click to shoot, shoot function activates in intervals
-            {
-                nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
-                Shoot(); //shoot gun
-            }
+        {
+            nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
+            Shoot(); //shoot gun
+        }
     }
     public void Reloading()
     {

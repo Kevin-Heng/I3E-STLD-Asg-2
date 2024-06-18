@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour 
 {
     public static GameManager Instance;
-
+    public Player player;
     //----------------------------------- Player ----------------------------------------// 
     public int playerHp = 100;
 
@@ -113,19 +114,21 @@ public class GameManager : MonoBehaviour
 
             currentRLAmmoText.enabled = false;
             totalRLAmmoText.enabled = false;
+            rL.ReduceSpeed(player);
         }
         else if(rifle.isEquipped && !rL.isEquipped && !rifle.isReloading && Input.GetKeyDown(KeyCode.Alpha2))
         {
             rifle.isEquipped = false;
             rL.isEquipped = true;
-
             rifle.gameObject.SetActive(false);
             rL.gameObject.SetActive(true);
             currentRifleAmmoText.enabled = false;
             totalRifleAmmoText.enabled = false;
             currentRLAmmoText.enabled = true;
             totalRLAmmoText.enabled = true;
+            rL.ReduceSpeed(player);
         }
+
     }
 
 

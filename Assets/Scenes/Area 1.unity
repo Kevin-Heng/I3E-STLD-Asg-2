@@ -195,6 +195,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 453084650579209848, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: MoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 453084650579209848, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: SprintSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710996597446327307, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1376474582}
+    - target: {fileID: 1710996597446327307, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: decreaseSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963313975685303100, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1058472554}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 344.278
@@ -3576,6 +3596,17 @@ Transform:
   - {fileID: 1234706375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -27.917, z: 0}
+--- !u!114 &1376474582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963313975685303100, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+  m_PrefabInstance: {fileID: 130549195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f00943a3e0bebe4aa36809e25542699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388533609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,6 +3636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3640acad25acd441bf238712db5c7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1376474582}
   playerHp: 100
   currentRifleAmmoText: {fileID: 1621540704}
   totalRifleAmmoText: {fileID: 135027840}
