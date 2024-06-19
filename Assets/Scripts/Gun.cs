@@ -12,7 +12,7 @@ using TMPro;
 public class Gun : MonoBehaviour
 {
     //Player camera 
-    [SerializeField] public Transform fpsCam; 
+    [SerializeField] public Transform fpsCam;
 
     //Gun firerate
     /// <summary>
@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// Particle effect to instantiate when bullet hits an object
     /// </summary>
-    public GameObject bulletHit; 
+    public GameObject bulletHit;
     /// <summary>
     /// Particle effect at barrel of gun when bullet is shot
     /// </summary>
@@ -74,7 +74,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// Total ammo in gun
     /// </summary>
-    public int totalAmmo; 
+    public int totalAmmo;
     /// <summary>
     /// Current ammo in gun magazine
     /// </summary>
@@ -82,7 +82,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// Amount of ammo in one gun magazine
     /// </summary>
-    public int magazineAmmo; 
+    public int magazineAmmo;
     /// <summary>
     /// Boolean to check if gun is equipped or not
     /// </summary>
@@ -98,8 +98,8 @@ public class Gun : MonoBehaviour
         {
             if (currentAmmo > 0) //check if there is enough ammo to shoot
             {
-                GameManager.Instance.ReduceAmmo(ref currentAmmo); 
-                muzzleFlash.Play(); 
+                GameManager.Instance.ReduceAmmo(ref currentAmmo);
+                muzzleFlash.Play();
                 AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, gunShotSoundLvl);
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact, destroyTime); //remove the variable from hierarchy
@@ -108,20 +108,20 @@ public class Gun : MonoBehaviour
                     StartCoroutine(Reload()); //reload function 
                 }
                 GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
-                
+
                 if (hitInfo.transform.CompareTag("Enemy")) //raycast hits an enemy 
                 {
                     Enemy enemy = hitInfo.transform.GetComponent<Enemy>(); //access Enemy class 
                     enemy.enemyHp -= damage; //reduce enemy hp by gun damage
                     //enemy dies when hp is less than or equal to 0
-                    if (enemy.enemyHp <= 0) 
+                    if (enemy.enemyHp <= 0)
                     {
                         Destroy(enemy.gameObject);
                     }
-                    
+
                 }
             }
-            
+
         }
         else //reduce ammo if player shoots the air
         {
@@ -135,7 +135,7 @@ public class Gun : MonoBehaviour
                     StartCoroutine(Reload()); //reload function runs
                 }
                 GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
-                
+
             }
 
         }
@@ -146,7 +146,7 @@ public class Gun : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public IEnumerator Reload() //reload function such that there is a reload time 
-    {       
+    {
         if (currentAmmo < magazineAmmo) //can only reload when current ammo is less than the total ammo for one magazine
         {
             if (totalAmmo > 0) //reload gun if there is enough ammo
@@ -185,7 +185,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame

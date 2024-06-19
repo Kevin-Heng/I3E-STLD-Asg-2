@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     /// Mask to only attack enemy
     /// </summary>
     public LayerMask Player;
+
     [SerializeField] Transform fpsCam; //player camera
 
     /// <summary>

@@ -28,8 +28,7 @@ public class RocketLauncher : Gun
     public void ChangeSpeed(Player player)
     {      
         if (isEquipped) //rocket launcher is equipped
-        {
-            
+        {            
             float currentSpeed = player.GetComponent<FirstPersonController>().MoveSpeed; //get current player speed
             currentSpeed -= changeSpeed; //change player speed
             player.GetComponent<FirstPersonController>().MoveSpeed = currentSpeed; //set new player speed

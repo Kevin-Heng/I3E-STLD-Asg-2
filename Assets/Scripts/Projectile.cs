@@ -31,15 +31,15 @@ public class Projectile : MonoBehaviour
     /// </summary>
     Transform fpsCam;
 
-  
+
     private void OnCollisionEnter(Collision collision)
     {
-        
+
         if (collision.gameObject.CompareTag("Player")) //check if projectile hits player
         {
             Destroy(projectile);
-            GameManager.Instance.ReducePlayerHp(damage,playerHit, playerDie, fpsCam);
-            
+            GameManager.Instance.ReducePlayerHp(damage, playerHit,  playerDie, fpsCam);
+            Debug.Log(GameManager.Instance.playerHp);
 
         }
         else //projectile miss player

@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     /// </summary>
     Gun currentGun;
 
+    Interact currentInteractable;
+    [SerializeField] Transform fpsCam;
+
+
+
     /// <summary>
     /// Function to update which gun is currently equipped
     /// </summary>
@@ -33,6 +38,15 @@ public class Player : MonoBehaviour
         currentGun.Reloading();
     }
 
+    void OnInteract()
+    {
+        if(currentInteractable != null)
+        {
+            currentInteractable.InteractObject();
+        }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +56,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RaycastHit hitInfo;
+        if (Physics.Raycast(fpsCam.position, fpsCam.forward, out hitInfo))
+        {
+            if (hitInfo.transform.TryGetComponent<Interact>(out currentInteractable))
+            {
+                Debug.Log(hitInfo.transform.name);
+            }
+        }
+
     }
 }
