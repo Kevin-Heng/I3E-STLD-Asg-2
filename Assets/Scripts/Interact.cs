@@ -10,7 +10,6 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] Transform fpsCam;
 
     public virtual void InteractObject()
     {

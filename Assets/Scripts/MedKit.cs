@@ -11,18 +11,33 @@ using UnityEngine;
 public class MedKit : Interact
 {
     public int healHpAmt;
+    public AudioClip pickUp;
+    [SerializeField] Transform fpsCam;
 
     public override void InteractObject()
     {
-        HealPlayer();
-        base.InteractObject();
+        if (GameManager.Instance.playerHp < 100)
+        {
+            HealPlayer();
+            base.InteractObject();
+        }
     }
     public void HealPlayer()
     {
-        if(GameManager.Instance.playerHp < 100)
+        int hpDiff = 100 - GameManager.Instance.playerHp; 
+        if(hpDiff >= healHpAmt)
         {
             GameManager.Instance.playerHp += healHpAmt;
         }
+        else
+        {
+            healHpAmt -= hpDiff;
+            GameManager.Instance.playerHp += healHpAmt;
+            
+        }
+        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
+        Debug.Log(GameManager.Instance.playerHp);
+
     }
 
     // Start is called before the first frame update

@@ -88,6 +88,8 @@ public class Gun : MonoBehaviour
     /// </summary>
     public bool isEquipped;
 
+    Enemy enemy;
+
     /// <summary>
     /// Function to shoot a bullet
     /// </summary>
@@ -109,15 +111,9 @@ public class Gun : MonoBehaviour
                 }
                 GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
 
-                if (hitInfo.transform.CompareTag("Enemy")) //raycast hits an enemy 
+                if (hitInfo.transform.TryGetComponent<Enemy>(out enemy)) //raycast hits an enemy 
                 {
-                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>(); //access Enemy class 
-                    enemy.enemyHp -= damage; //reduce enemy hp by gun damage
-                    //enemy dies when hp is less than or equal to 0
-                    if (enemy.enemyHp <= 0)
-                    {
-                        Destroy(enemy.gameObject);
-                    }
+                    DamageEnemy(damage);
 
                 }
             }
@@ -140,6 +136,17 @@ public class Gun : MonoBehaviour
 
         }
     }
+
+    public virtual void DamageEnemy(int damage)
+    {
+        enemy.enemyHp -= damage; //reduce enemy hp by gun damage
+                                 //enemy dies when hp is less than or equal to 0
+        if (enemy.enemyHp <= 0)
+        {
+            Destroy(enemy.gameObject);
+        }
+    }
+
 
     /// <summary>
     /// Reload function for gun

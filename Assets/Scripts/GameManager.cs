@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour 
 {
     /// <summary>
     /// To set only one game manager at all times
@@ -86,8 +86,9 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
         }
     }
-
     //----------------------------------- Gun ----------------------------------------// 
+
+
     /// <summary>
     /// Function to reduce ammo when player shoots gun
     /// </summary>
@@ -134,7 +135,7 @@ public class GameManager : MonoBehaviour
             currentRLAmmoText.text = currentAmmo.ToString(); //update current rocket launcher ammo
             totalRLAmmoText.text = totalAmmo.ToString(); //update total rocket launcher ammo
         }
-
+        
     }
 
 
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
         }
     }
     //--------------------------------------------------------------------------------//
+
     /// <summary>
     /// Function to swap weapons
     /// </summary>
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour
             rL.gameObject.SetActive(false); //hide rocket launcher
 
             //show rifle UI
-            currentRifleAmmoText.enabled = true;
+            currentRifleAmmoText.enabled = true; 
             totalRifleAmmoText.enabled = true;
 
             //hide rocket launcher UI
@@ -176,14 +178,14 @@ public class GameManager : MonoBehaviour
             totalRLAmmoText.enabled = false;
             rL.ChangeSpeed(player); //change player speed
         }
-        else if (rifle.isEquipped && !rL.isEquipped && !rifle.isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+        else if(rifle.isEquipped && !rL.isEquipped && !rifle.isReloading && Input.GetKeyDown(KeyCode.Alpha2))
         {
             rifle.isEquipped = false; //rifle is unequipped
             rL.isEquipped = true; //rocket launcher is equipped
 
             rifle.gameObject.SetActive(false); //hide rifle
             rL.gameObject.SetActive(true); //show rocket launcher
-
+            
             //hide rifle UI
             currentRifleAmmoText.enabled = false;
             totalRifleAmmoText.enabled = false;
@@ -214,6 +216,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SwapWeapons();
+        SwapWeapons();       
     }
 }

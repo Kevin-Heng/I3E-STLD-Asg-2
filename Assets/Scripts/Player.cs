@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Interact currentInteractable;
     [SerializeField] Transform fpsCam;
 
-
+    public float interactionDist;
 
     /// <summary>
     /// Function to update which gun is currently equipped
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         RaycastHit hitInfo;
-        if (Physics.Raycast(fpsCam.position, fpsCam.forward, out hitInfo))
+        if (Physics.Raycast(fpsCam.position, fpsCam.forward, out hitInfo, interactionDist))
         {
             if (hitInfo.transform.TryGetComponent<Interact>(out currentInteractable))
             {

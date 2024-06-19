@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public int enemyHp;
 
+
     /// <summary>
     /// To set player and agent variables
     /// </summary>
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
     }
+
     /// <summary>
     /// Function for when enemy is walking around
     /// </summary>

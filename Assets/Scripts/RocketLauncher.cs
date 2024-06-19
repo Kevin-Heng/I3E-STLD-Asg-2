@@ -21,6 +21,10 @@ public class RocketLauncher : Gun
     /// </summary>
     [SerializeField] GameObject player;
 
+    public float radius;
+
+    Gun gun;
+
     /// <summary>
     /// Function to change player speed depending on the gun equipped
     /// </summary>
@@ -41,6 +45,7 @@ public class RocketLauncher : Gun
         }
 
     }
+
     // Start is called before the first frame update
     void Start()
     {

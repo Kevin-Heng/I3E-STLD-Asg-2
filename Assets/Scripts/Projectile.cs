@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
     /// </summary>
     Transform fpsCam;
 
-
     private void OnCollisionEnter(Collision collision)
     {
 
