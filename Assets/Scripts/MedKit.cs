@@ -35,15 +35,18 @@ public class MedKit : Interact
             GameManager.Instance.playerHp += healHpAmt;
             
         }
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
-        Debug.Log(GameManager.Instance.playerHp);
+        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.4f);
+        GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (fpsCam == null) //since projectile game object is not in scene, this is needed to set the fpsCam
+        {
+            fpsCam = Camera.main.transform; //set player camera
+        }
     }
 
     // Update is called once per frame

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2926186214402625644}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,6 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7192845124812347348}
-  damage: 0
+  damage: 10
   playerHit: {fileID: 8300000, guid: 46eee5b383af081419d7b81bb282a8a6, type: 3}
   playerDie: {fileID: 8300000, guid: f9c070f5cbc8c6b45a1383834b751ac9, type: 3}

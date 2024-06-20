@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AmmoKit : Interact
 {
-    int ammoAmt;
+    public int rifleAmmoAmt;
+    public int rLAmmoAmt;
     public AudioClip pickUp;
     [SerializeField] Transform fpsCam;
     public Rifle rifle;
@@ -17,18 +18,25 @@ public class AmmoKit : Interact
     }
     public void IncreaseGunAmmo()
     {
-        if (rifle.isEquipped)
+        int rifleAmmoDiff = rifleAmmoAmt - rifle.currentAmmo;
+        rifle.currentAmmo += rifleAmmoDiff;
+        if(rifleAmmoDiff > 0)
         {
-            ammoAmt = 30;
-            rifle.totalAmmo += ammoAmt;
-            GameManager.Instance.totalRifleAmmoText.text = rifle.totalAmmo.ToString();
+            GameManager.Instance.currentRifleAmmoText.text = rifle.currentAmmo.ToString();
         }
-        else
+        rifle.totalAmmo += rifleAmmoAmt;
+        GameManager.Instance.totalRifleAmmoText.text = rifle.totalAmmo.ToString();
+
+
+        int rLAmmoDiff = rLAmmoAmt - rL.currentAmmo;
+        rL.currentAmmo += rLAmmoDiff;
+        if(rLAmmoDiff > 0)
         {
-            ammoAmt = 4;
-            rL.totalAmmo += ammoAmt;
-            GameManager.Instance.totalRLAmmoText.text = rL.totalAmmo.ToString();
+            GameManager.Instance.currentRLAmmoText.text = rL.currentAmmo.ToString();
         }
+        rL.totalAmmo += rLAmmoAmt;
+        GameManager.Instance.totalRLAmmoText.text = rL.totalAmmo.ToString();
+        
         AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
 
     }
@@ -36,7 +44,15 @@ public class AmmoKit : Interact
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (fpsCam == null) //since projectile game object is not in scene, this is needed to set the fpsCam
+        {
+            fpsCam = Camera.main.transform; //set player camera
+        }
+        if(rifle == null && rL == null)
+        {
+            rifle = GameManager.Instance.rifle;
+            rL = GameManager.Instance.rL;
+        }
     }
 
     // Update is called once per frame

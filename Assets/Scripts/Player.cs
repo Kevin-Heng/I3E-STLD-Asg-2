@@ -4,9 +4,13 @@
  * Description: The Player class is used to handle player interactions
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class Player : MonoBehaviour
 {
@@ -29,6 +33,10 @@ public class Player : MonoBehaviour
        currentGun = gun;
     }
 
+    void OnShoot()
+    {
+        
+    }
     /// <summary>
     /// Player input to reload gun (R)
     /// </summary>

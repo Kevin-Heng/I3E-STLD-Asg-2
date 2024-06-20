@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a5155bf4132347a144a966568b7ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 319.625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a5155bf4132347a144a966568b7ea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a5155bf4132347a144a966568b7ea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3944404
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a5155bf4132347a144a966568b7ea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -103,7 +103,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a0437f8c193df4488906a953430f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rifleAmmoAmt: 30
+  rLAmmoAmt: 4
   pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
   fpsCam: {fileID: 0}
   rifle: {fileID: 0}

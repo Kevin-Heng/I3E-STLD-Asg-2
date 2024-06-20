@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     //----------------------------------- Player ----------------------------------------// 
     public int playerHp = 100;
 
+    public TextMeshProUGUI playerHpText;
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
     /// UI text for current ammo in the rifle's magazine
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
         }
+
     }
     //----------------------------------- Gun ----------------------------------------// 
 
@@ -216,6 +218,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SwapWeapons();       
+        SwapWeapons();
+        playerHpText.text = playerHp.ToString();
     }
 }

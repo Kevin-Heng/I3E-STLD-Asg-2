@@ -90,6 +90,11 @@ public class Gun : MonoBehaviour
 
     Enemy enemy;
 
+    public int maxNumRange;
+
+    public GameObject medKit;
+    public GameObject ammoKit;
+
     /// <summary>
     /// Function to shoot a bullet
     /// </summary>
@@ -135,6 +140,10 @@ public class Gun : MonoBehaviour
             }
 
         }
+        if (hitInfo.transform.CompareTag("Projectile"))
+        {
+            Destroy(hitInfo.transform.gameObject);
+        }
     }
 
     public virtual void DamageEnemy(int damage)
@@ -144,9 +153,25 @@ public class Gun : MonoBehaviour
         if (enemy.enemyHp <= 0)
         {
             Destroy(enemy.gameObject);
+            RandomDrop();
         }
     }
 
+    public void RandomDrop()
+    {
+        int randomNum = Random.Range(0, maxNumRange);
+        if(randomNum == 1 || randomNum == 2)
+        {
+            GameObject medKitInstance = Instantiate(medKit, enemy.transform.position, medKit.transform.rotation);
+            Destroy(medKitInstance, 6f);
+        }
+        else if(randomNum == 4 || randomNum == 5)
+        {
+            GameObject ammoKitInstance = Instantiate(ammoKit, enemy.transform.position, ammoKit.transform.rotation);
+            Destroy(ammoKitInstance, 6f);
+        }
+        Debug.Log(randomNum);
+    }
 
     /// <summary>
     /// Reload function for gun
