@@ -31,6 +31,9 @@ public class Projectile : MonoBehaviour
     /// </summary>
     Transform fpsCam;
 
+
+
+
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -47,6 +50,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,7 @@ public class Projectile : MonoBehaviour
         {
             fpsCam = Camera.main.transform; //set player camera
         }
+
     }
 
 

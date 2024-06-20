@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public int enemyHp;
 
+    public int projectileDamage;
 
     /// <summary>
     /// To set player and agent variables
@@ -158,6 +159,7 @@ public class Enemy : MonoBehaviour
         if (!attack)
         {
             spawnProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation); //projectile spawns
+            spawnProjectile.GetComponent<Projectile>().damage = projectileDamage;
 
             Rigidbody projectileRb = spawnProjectile.GetComponent<Rigidbody>(); //access rigidbody component of projectile
 
@@ -179,7 +181,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAttacks);
         attack = false;
     }
-
 
 
 

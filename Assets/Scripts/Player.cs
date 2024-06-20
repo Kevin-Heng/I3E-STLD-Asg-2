@@ -55,6 +55,16 @@ public class Player : MonoBehaviour
 
     }
 
+    void OnWeapon1()
+    {
+        GameManager.Instance.EquipWeapon1();
+    }
+
+    void OnWeapon2()
+    {
+        GameManager.Instance.EquipWeapon2();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
 
     //--------------------------------------------------------------------------------// 
-
+    
     /// <summary>
     /// Function to ensure there is only one game manager
     /// </summary>
@@ -158,12 +158,9 @@ public class GameManager : MonoBehaviour
     }
     //--------------------------------------------------------------------------------//
 
-    /// <summary>
-    /// Function to swap weapons
-    /// </summary>
-    public void SwapWeapons()
+    public void EquipWeapon1()
     {
-        if (!rifle.isEquipped && rL.isEquipped && !rL.isReloading && Input.GetKeyDown(KeyCode.Alpha1)) //check if rifle is not equipped, rocket launcher is equipped and player presses 1
+        if (!rifle.isEquipped && rL.isEquipped && !rL.isReloading) //check if rifle is not equipped, rocket launcher is equipped and player presses 1
         {
             rifle.isEquipped = true; //rifle is equipped
             rL.isEquipped = false; //rocket launcher is unequipped
@@ -172,7 +169,7 @@ public class GameManager : MonoBehaviour
             rL.gameObject.SetActive(false); //hide rocket launcher
 
             //show rifle UI
-            currentRifleAmmoText.enabled = true; 
+            currentRifleAmmoText.enabled = true;
             totalRifleAmmoText.enabled = true;
 
             //hide rocket launcher UI
@@ -180,14 +177,18 @@ public class GameManager : MonoBehaviour
             totalRLAmmoText.enabled = false;
             rL.ChangeSpeed(player); //change player speed
         }
-        else if(rifle.isEquipped && !rL.isEquipped && !rifle.isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+    }
+
+    public void EquipWeapon2()
+    {
+        if (rifle.isEquipped && !rL.isEquipped && !rifle.isReloading)
         {
             rifle.isEquipped = false; //rifle is unequipped
             rL.isEquipped = true; //rocket launcher is equipped
 
             rifle.gameObject.SetActive(false); //hide rifle
             rL.gameObject.SetActive(true); //show rocket launcher
-            
+
             //hide rifle UI
             currentRifleAmmoText.enabled = false;
             totalRifleAmmoText.enabled = false;
@@ -197,8 +198,8 @@ public class GameManager : MonoBehaviour
             totalRLAmmoText.enabled = true;
             rL.ChangeSpeed(player); //change player speed
         }
-
     }
+
 
 
     // Start is called before the first frame update
@@ -213,12 +214,13 @@ public class GameManager : MonoBehaviour
         //hide rocket launcher UI
         currentRLAmmoText.enabled = false;
         totalRLAmmoText.enabled = false;
+
+        playerHpText.text = playerHp.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SwapWeapons();
-        playerHpText.text = playerHp.ToString();
+        
     }
 }

@@ -34,14 +34,24 @@ public class RocketLauncher : Gun
         if (isEquipped) //rocket launcher is equipped
         {            
             float currentSpeed = player.GetComponent<FirstPersonController>().MoveSpeed; //get current player speed
+            float currentSprint = player.GetComponent<FirstPersonController>().SprintSpeed; //get currrent sprint speed
+
             currentSpeed -= changeSpeed; //change player speed
+            currentSprint -= changeSpeed; //change sprint speed
+
             player.GetComponent<FirstPersonController>().MoveSpeed = currentSpeed; //set new player speed
+            player.GetComponent<FirstPersonController>().SprintSpeed = currentSprint; //set new sprint speed
         }
         else //rocket launcher is unequipped
         {
             float currentSpeed = player.GetComponent<FirstPersonController>().MoveSpeed; //get currrent player speed
+            float currentSprint = player.GetComponent<FirstPersonController>().SprintSpeed; //get currrent sprint speed
+
             currentSpeed += changeSpeed; //change player speed
+            currentSprint += changeSpeed; //change sprint speed
+
             player.GetComponent<FirstPersonController>().MoveSpeed = currentSpeed; //set new player speed
+            player.GetComponent<FirstPersonController>().SprintSpeed = currentSprint; //set new sprint speed
         }
 
     }
