@@ -27,12 +27,13 @@ public class MedKit : Interact
         int hpDiff = 100 - GameManager.Instance.playerHp; 
         if(hpDiff >= healHpAmt)
         {
+            Debug.Log("total heal: " + hpDiff);
             GameManager.Instance.playerHp += healHpAmt;
         }
-        else
+        else //98 only need +2
         {
-            healHpAmt -= hpDiff;
-            GameManager.Instance.playerHp += healHpAmt;
+            Debug.Log(hpDiff);
+            GameManager.Instance.playerHp += hpDiff;
             
         }
         AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.4f);

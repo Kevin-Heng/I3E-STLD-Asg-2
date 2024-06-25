@@ -13,11 +13,10 @@ public class SceneChanger : MonoBehaviour
 {
     public int sceneIndex;
 
-    private void OnCollisionEnter(Collision collision)
+    public void ChangeScene()
     {
         SceneManager.LoadScene(sceneIndex);
     }
-
     // Start is called before the first frame update
     void Start()
     {

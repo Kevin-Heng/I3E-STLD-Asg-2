@@ -6,14 +6,22 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interact : MonoBehaviour
 {
+    public int sceneIndex;
 
     public virtual void InteractObject()
-    {
+    {       
         Destroy(gameObject);
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     // Start is called before the first frame update

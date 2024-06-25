@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Weapon
   - Projectile
+  - Collectible
+  - Door
   layers:
   - Default
   - TransparentFX

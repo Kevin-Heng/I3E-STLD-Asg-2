@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.PackageManager;
 
 public class Gun : MonoBehaviour
 {
@@ -98,7 +99,7 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// Function to shoot a bullet
     /// </summary>
-    public void Shoot()
+    public virtual void Shoot()
     {
         RaycastHit hitInfo; //to store info when raycast hits an object
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo)) //reduce ammo count if player hits item
@@ -110,17 +111,14 @@ public class Gun : MonoBehaviour
                 AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, gunShotSoundLvl);
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact, destroyTime); //remove the variable from hierarchy
+                
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function 
                 }
                 GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
 
-                if (hitInfo.transform.TryGetComponent<Enemy>(out enemy)) //raycast hits an enemy 
-                {
-                    DamageEnemy(damage);
-
-                }
+                DamageEnemy(damage, hitInfo);
             }
 
         }
@@ -146,14 +144,18 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public virtual void DamageEnemy(int damage)
+    public void DamageEnemy(int damage, RaycastHit hitInfo)
     {
-        enemy.enemyHp -= damage; //reduce enemy hp by gun damage
-                                 //enemy dies when hp is less than or equal to 0
-        if (enemy.enemyHp <= 0)
+        if (hitInfo.transform.TryGetComponent<Enemy>(out enemy)) //raycast hits an enemy 
         {
-            Destroy(enemy.gameObject);
-            RandomDrop();
+            enemy.enemyHp -= damage; //reduce enemy hp by gun damage
+                                     //enemy dies when hp is less than or equal to 0
+            if (enemy.enemyHp <= 0)
+            {
+                Destroy(enemy.gameObject);
+                RandomDrop();
+            }
+            Debug.Log(enemy.name);
         }
     }
 
@@ -170,7 +172,6 @@ public class Gun : MonoBehaviour
             GameObject ammoKitInstance = Instantiate(ammoKit, enemy.transform.position, ammoKit.transform.rotation);
             Destroy(ammoKitInstance, 6f);
         }
-        Debug.Log(randomNum);
     }
 
     /// <summary>
@@ -192,13 +193,13 @@ public class Gun : MonoBehaviour
         }
     }
 
-
     public void Shooting()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToShoot && !isReloading && isEquipped) //can hold left click to shoot, shoot function activates in intervals
+        if (Time.time >= nextTimeToShoot && !isReloading && isEquipped) //can hold left click to shoot, shoot function activates in intervals
         {
             nextTimeToShoot = Time.time + 1 / fireRate; //this var increases as player continues to shoot and, shots fired are constant
             Shoot(); //shoot gun
+            OutOfAmmo();
         }
     }
     public void Reloading()

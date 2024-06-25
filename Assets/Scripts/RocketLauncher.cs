@@ -21,9 +21,8 @@ public class RocketLauncher : Gun
     /// </summary>
     [SerializeField] GameObject player;
 
-    public float radius;
-
     Gun gun;
+
 
     /// <summary>
     /// Function to change player speed depending on the gun equipped
@@ -70,7 +69,5 @@ public class RocketLauncher : Gun
         {
             player.GetComponent<Player>().UpdateGun(this);
         }
-        Shooting();
-        OutOfAmmo();
     }
 }

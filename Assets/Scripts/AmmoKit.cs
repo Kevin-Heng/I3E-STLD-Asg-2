@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AmmoKit : Interact
@@ -10,12 +11,14 @@ public class AmmoKit : Interact
     [SerializeField] Transform fpsCam;
     public Rifle rifle;
     public RocketLauncher rL;
+    public TextMeshProUGUI interactText;
 
     public override void InteractObject()
     {
         IncreaseGunAmmo();
         base.InteractObject();      
     }
+
     public void IncreaseGunAmmo()
     {
         int rifleAmmoDiff = rifleAmmoAmt - rifle.currentAmmo;

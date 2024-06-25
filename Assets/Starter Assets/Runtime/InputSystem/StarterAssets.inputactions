@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
-                    "type": "Value",
-                    "id": "301cc0c8-ed23-46e1-b390-b85347a636c6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Weapon1",
                     "type": "Button",
                     "id": "119065d0-c47a-4665-95d5-a796fe542622",
@@ -84,6 +75,15 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "PassThrough",
+                    "id": "79900865-d98b-40ab-b2a2-b7c8775cdf29",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -288,17 +288,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9f0d5bf4-68bd-42f1-a487-2540a7f1f6a4",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "edc4e1be-0ad7-462a-8891-75ed4748a9ae",
                     "path": "<Keyboard>/#(1)",
                     "interactions": "",
@@ -316,6 +305,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Weapon2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5b63e65-d2d8-41ba-b158-89dfa285657c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

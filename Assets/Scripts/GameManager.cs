@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public int playerHp = 100;
 
     public TextMeshProUGUI playerHpText;
+
+    public Transform fpsCam;
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
     /// UI text for current ammo in the rifle's magazine
@@ -53,8 +55,10 @@ public class GameManager : MonoBehaviour
     public RocketLauncher rL;
 
 
+
     //--------------------------------------------------------------------------------// 
-    
+
+
     /// <summary>
     /// Function to ensure there is only one game manager
     /// </summary>
@@ -89,8 +93,6 @@ public class GameManager : MonoBehaviour
 
     }
     //----------------------------------- Gun ----------------------------------------// 
-
-
     /// <summary>
     /// Function to reduce ammo when player shoots gun
     /// </summary>

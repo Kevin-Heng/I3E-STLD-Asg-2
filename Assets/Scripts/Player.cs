@@ -9,8 +9,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class Player : MonoBehaviour
 {
@@ -24,6 +22,9 @@ public class Player : MonoBehaviour
 
     public float interactionDist;
 
+    bool shooting;
+    
+
     /// <summary>
     /// Function to update which gun is currently equipped
     /// </summary>
@@ -32,10 +33,9 @@ public class Player : MonoBehaviour
     {
        currentGun = gun;
     }
-
     void OnShoot()
     {
-        
+        shooting = !shooting;
     }
     /// <summary>
     /// Player input to reload gun (R)
@@ -46,20 +46,37 @@ public class Player : MonoBehaviour
         currentGun.Reloading();
     }
 
+    /// <summary>
+    /// Player input to interact with items (E)
+    /// </summary>
     void OnInteract()
     {
         if(currentInteractable != null)
         {
-            currentInteractable.InteractObject();
+            if (currentInteractable.CompareTag("Collectible"))
+            {
+                currentInteractable.InteractObject();
+            }
+            else if (currentInteractable.CompareTag("Door"))
+            {
+                currentInteractable.ChangeScene();
+            }
+            
         }
 
     }
 
+    /// <summary>
+    /// Playeer input to equip first weapon/rifle (1)
+    /// </summary>
     void OnWeapon1()
     {
         GameManager.Instance.EquipWeapon1();
     }
 
+    /// <summary>
+    /// Player input to equip second weapon/rocket launcher (2)
+    /// </summary>
     void OnWeapon2()
     {
         GameManager.Instance.EquipWeapon2();
@@ -74,6 +91,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(shooting)
+        {
+            if (GameManager.Instance.rifle.isEquipped)
+            {
+                GameManager.Instance.rifle.Shooting();
+            }
+            else
+            {
+                GameManager.Instance.rL.Shooting();
+            }
+            
+        }
         RaycastHit hitInfo;
         if (Physics.Raycast(fpsCam.position, fpsCam.forward, out hitInfo, interactionDist))
         {
