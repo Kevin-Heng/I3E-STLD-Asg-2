@@ -10268,14 +10268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire hazard (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5060287919252048428, guid: 4fd5c5b146fec9c4eab8b4fc944f81c6, type: 3}
-      propertyPath: burnDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5060287919252048428, guid: 4fd5c5b146fec9c4eab8b4fc944f81c6, type: 3}
-      propertyPath: burnInterval
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7805397987685849304, guid: 4fd5c5b146fec9c4eab8b4fc944f81c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.330017

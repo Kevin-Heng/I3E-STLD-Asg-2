@@ -32,7 +32,6 @@ public class Burn : MonoBehaviour
             if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0)
             {
                 BurnDamage();
-                Debug.Log("burn");
             }
         }
     }
@@ -69,6 +68,7 @@ public class Burn : MonoBehaviour
         GameManager.Instance.burning = true;
         while (Time.time < endTime && GameManager.Instance.playerHp > 0)
         {
+            Debug.Log("burn");
             GameManager.Instance.burningFrame.SetActive(true);
             GameManager.Instance.ReducePlayerHp(burnDamage, playerHit, playerDie, GameManager.Instance.fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();

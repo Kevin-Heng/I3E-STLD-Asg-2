@@ -48,7 +48,6 @@ public class SceneChanger : MonoBehaviour
         Cursor.visible = false;
         if(GameManager.Instance != null)
         {
-            GameManager.Instance.burning = false;
 
             GameManager.Instance.player.gameObject.SetActive(true);
             GameManager.Instance.playerUI.SetActive(true);
@@ -83,12 +82,9 @@ public class SceneChanger : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        GameManager.Instance.burning = false;
         GameManager.Instance.burningFrame.SetActive(false);
 
         GameManager.Instance.gameObject.SetActive(true);
@@ -110,6 +106,7 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.checkPoint;
             Physics.SyncTransforms();            
         }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

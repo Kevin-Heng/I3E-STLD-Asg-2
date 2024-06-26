@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
         player.shooting = false;
     }
 
-
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
     /// Function to reduce ammo when player shoots gun
