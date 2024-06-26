@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     public Vector3 checkPoint;
     public Transform startPoint;
+    public bool checkPointSet;
     
 
     /// <summary>
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
     public void CheckPoint(GameObject newCheckPoint)
     {
         checkPoint = newCheckPoint.transform.position;
+        checkPointSet = true;
     }
 
     /// <summary>

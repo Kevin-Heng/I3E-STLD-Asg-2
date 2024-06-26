@@ -24,6 +24,8 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.playerUI.SetActive(false);
 
             GameManager.Instance.deathScreen.SetActive(false);
+
+            GameManager.Instance.burningFrame.SetActive(false);
         }
         else
         {
@@ -33,6 +35,7 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.player.gameObject.SetActive(true);
             GameManager.Instance.playerUI.SetActive(true);
             GameManager.Instance.deathScreen.SetActive(false);
+            GameManager.Instance.burningFrame.SetActive(false);
                      
         }
         SceneManager.LoadScene(sceneIndex);
@@ -85,8 +88,8 @@ public class SceneChanger : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
-        Physics.SyncTransforms();
+        GameManager.Instance.burning = false;
+        GameManager.Instance.burningFrame.SetActive(false);
 
         GameManager.Instance.gameObject.SetActive(true);
         GameManager.Instance.player.gameObject.SetActive(true);
@@ -96,6 +99,17 @@ public class SceneChanger : MonoBehaviour
         GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
 
         GameManager.Instance.deathScreen.SetActive(false);
+
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
+            Physics.SyncTransforms();
+        }
+        else
+        {
+            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.checkPoint;
+            Physics.SyncTransforms();            
+        }
     }
 
 }

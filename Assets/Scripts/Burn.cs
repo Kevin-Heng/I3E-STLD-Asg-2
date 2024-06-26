@@ -29,7 +29,11 @@ public class Burn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BurnDamage();
+            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0)
+            {
+                BurnDamage();
+                Debug.Log("burn");
+            }
         }
     }
 
@@ -40,10 +44,6 @@ public class Burn : MonoBehaviour
             if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0)
             {
                 StartCoroutine(BurnDOT());
-            }
-            if(GameManager.Instance.playerHp <= 0)
-            {
-                GameManager.Instance.burning = false;
             }
         }
     }

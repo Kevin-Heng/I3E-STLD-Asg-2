@@ -14,8 +14,7 @@ public class Interact : MonoBehaviour
 {
     public int sceneIndex;
     public GameObject spawnObject;
-    public bool checkPointSet;
-    [SerializeField] Player player;
+
     public virtual void InteractObject()
     {       
         Destroy(gameObject);
@@ -24,11 +23,12 @@ public class Interact : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneIndex);
+        GameManager.Instance.burningFrame.SetActive(false);
     }
     
     public void SetSpawnPoint()
     {
-        player.CheckPoint(spawnObject);
+        GameManager.Instance.player.CheckPoint(spawnObject);
     }
 
     // Start is called before the first frame update
