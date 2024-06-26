@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public float interactionDist;
 
     bool shooting;
+
+    public Transform checkPoint;
     
 
     /// <summary>
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
             {
                 currentInteractable.ChangeScene();
             }
+
+
             
         }
 
@@ -85,7 +89,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

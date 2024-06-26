@@ -19,6 +19,7 @@ public class Rifle : Gun
     void Start()
     {
         isEquipped = true; //rifle is equipped at the start
+        currentAmmo = magazineAmmo;
     }
 
     // Update is called once per frame

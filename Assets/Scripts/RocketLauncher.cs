@@ -58,6 +58,7 @@ public class RocketLauncher : Gun
     // Start is called before the first frame update
     void Start()
     {
+        currentAmmo = magazineAmmo;
         isEquipped = false; //rocket launcher is unequipped at the start
         this.gameObject.SetActive(false); //hide rocket launcher
     }

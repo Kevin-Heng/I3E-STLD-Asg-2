@@ -16,6 +16,13 @@ public class SceneChanger : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneIndex);
+        if(sceneIndex > 0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            GameManager.Instance.gameObject.SetActive(true);
+        }
+
     }
     // Start is called before the first frame update
     void Start()
@@ -26,6 +33,6 @@ public class SceneChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+ 
     }
 }

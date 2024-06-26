@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 public class Interact : MonoBehaviour
 {
     public int sceneIndex;
-
+    public GameObject spawnObject;
     public virtual void InteractObject()
     {       
         Destroy(gameObject);
@@ -24,6 +24,7 @@ public class Interact : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,6 @@ public class Interact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

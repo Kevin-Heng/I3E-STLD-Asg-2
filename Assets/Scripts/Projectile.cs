@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
             Destroy(projectile);
             GameManager.Instance.ReducePlayerHp(damage, playerHit,  playerDie, fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
+            GameManager.Instance.DeathScreen();
 
         }
         else //projectile miss player
