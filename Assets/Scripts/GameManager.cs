@@ -24,13 +24,18 @@ public class GameManager : MonoBehaviour
     public Player player;
     //----------------------------------- Player ----------------------------------------// 
     public int playerHp;
-    int originalPlayerHp = 100;
+    public int originalPlayerHp = 100;
 
     public TextMeshProUGUI playerHpText;
 
     public Transform fpsCam;
 
     public GameObject deathScreen;
+
+    public GameObject playerUI;
+
+    public GameObject burningFrame;
+    public bool burning;
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
     /// UI text for current ammo in the rifle's magazine
@@ -93,7 +98,8 @@ public class GameManager : MonoBehaviour
         if (playerHp <= 0) //when player hp reaches 0 and below
         {
             AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
-            Instance.gameObject.SetActive(false);
+            player.gameObject.SetActive(false);
+            playerUI.SetActive(false);
             DeathScreen();
         }
 
@@ -101,16 +107,18 @@ public class GameManager : MonoBehaviour
 
     public void DeathScreen()
     {
-        if(playerHp ==  0)
-        {
-            SceneManager.LoadScene(3);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            playerHp = originalPlayerHp;
-            player.gameObject.transform.position = player.checkPoint.position;
-            Physics.SyncTransforms();
-        }
+        burningFrame.SetActive(false);
+        burning = false;
+
+        deathScreen.gameObject.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        playerHp = originalPlayerHp;
+        player.shooting = false;
     }
+
 
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
@@ -227,7 +235,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHp = originalPlayerHp;
         currentRifleAmmoText.text = rifle.currentAmmo.ToString(); //update rifle ammo 
         totalRifleAmmoText.text = rifle.totalAmmo.ToString(); //update rifle total ammo
 
@@ -238,6 +245,7 @@ public class GameManager : MonoBehaviour
         currentRLAmmoText.enabled = false;
         totalRLAmmoText.enabled = false;
 
+        playerHp = originalPlayerHp;
         playerHpText.text = playerHp.ToString();
 
     }

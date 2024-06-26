@@ -59,6 +59,7 @@ public class RocketLauncher : Gun
     void Start()
     {
         currentAmmo = magazineAmmo;
+        totalAmmo = originalTotalAmmo;
         isEquipped = false; //rocket launcher is unequipped at the start
         this.gameObject.SetActive(false); //hide rocket launcher
     }

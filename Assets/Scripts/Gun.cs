@@ -76,6 +76,9 @@ public class Gun : MonoBehaviour
     /// Total ammo in gun
     /// </summary>
     public int totalAmmo;
+
+    public int originalTotalAmmo;
+
     /// <summary>
     /// Current ammo in gun magazine
     /// </summary>

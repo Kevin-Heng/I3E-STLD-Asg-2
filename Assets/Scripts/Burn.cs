@@ -22,27 +22,29 @@ public class Burn : MonoBehaviour
     public static float nextTimeToBurn = 0;
 
     public float burnDuration;
-    public bool burning;
+
     public float burnInterval;
-
-    public GameObject burningFrame;
-
 
     private void OnTriggerStay(Collider other)
     {
-        BurnDamage();
+        if (other.CompareTag("Player"))
+        {
+            BurnDamage();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        burning = false;
         if (other.CompareTag("Player"))
         {
-            if (!burning)
+            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0)
             {
                 StartCoroutine(BurnDOT());
             }
-
+            if(GameManager.Instance.playerHp <= 0)
+            {
+                GameManager.Instance.burning = false;
+            }
         }
     }
 
@@ -50,12 +52,12 @@ public class Burn : MonoBehaviour
     {
         if(Time.time >= nextTimeToBurn && GameManager.Instance.playerHp > 0)
         {
-            burning = true;
-            burningFrame.SetActive(true);
+            GameManager.Instance.burning = true;
+            GameManager.Instance.burningFrame.SetActive(true);
             nextTimeToBurn = Time.time + 1/burnTime;
             GameManager.Instance.ReducePlayerHp(burnDamage, playerHit, playerDie, GameManager.Instance.fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
-            burning = false;
+            GameManager.Instance.burning = false;
         }
         
         
@@ -63,17 +65,17 @@ public class Burn : MonoBehaviour
 
     IEnumerator BurnDOT()
     {
-        burning = true;
         float endTime = Time.time + burnDuration;
+        GameManager.Instance.burning = true;
         while (Time.time < endTime && GameManager.Instance.playerHp > 0)
         {
-            burningFrame.SetActive(true);
+            GameManager.Instance.burningFrame.SetActive(true);
             GameManager.Instance.ReducePlayerHp(burnDamage, playerHit, playerDie, GameManager.Instance.fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             yield return new WaitForSeconds(burnInterval);
         }
-        burning = false;
-        burningFrame.SetActive(false);
+        GameManager.Instance.burning = false;
+        GameManager.Instance.burningFrame.SetActive(false);
     }
     
 
@@ -81,7 +83,7 @@ public class Burn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        burningFrame.SetActive(false);
+        GameManager.Instance.burningFrame.SetActive(false);
     }
 
     // Update is called once per frame

@@ -20,6 +20,7 @@ public class Rifle : Gun
     {
         isEquipped = true; //rifle is equipped at the start
         currentAmmo = magazineAmmo;
+        totalAmmo = originalTotalAmmo;
     }
 
     // Update is called once per frame

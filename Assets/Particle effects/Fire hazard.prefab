@@ -4736,7 +4736,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 16.78302, y: 0.985, z: 10.700001}
-  m_LocalScale: {x: 2.7319064, y: 2.7319062, z: 2.7319062}
+  m_LocalScale: {x: 2.7319064, y: 2.731906, z: 2.731906}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4806420646610001164}
@@ -9436,8 +9436,6 @@ MonoBehaviour:
   burnDamage: 4
   playerHit: {fileID: 8300000, guid: 1392191b72541944c81be53c12215c3e, type: 3}
   playerDie: {fileID: 8300000, guid: f9c070f5cbc8c6b45a1383834b751ac9, type: 3}
-  burnTime: 10
+  burnTime: 0.75
   burnDuration: 2
-  burning: 0
-  burnInterval: 1
-  burningFrame: {fileID: 0}
+  burnInterval: 0.75

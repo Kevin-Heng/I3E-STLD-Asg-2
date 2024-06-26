@@ -22,9 +22,10 @@ public class Player : MonoBehaviour
 
     public float interactionDist;
 
-    bool shooting;
+    public bool shooting;
 
-    public Transform checkPoint;
+    public Vector3 checkPoint;
+    public Transform startPoint;
     
 
     /// <summary>
@@ -63,11 +64,21 @@ public class Player : MonoBehaviour
             {
                 currentInteractable.ChangeScene();
             }
+            else if (currentInteractable.CompareTag("RespawnPoint"))
+            {
+                currentInteractable.SetSpawnPoint();
+                Debug.Log("Set spawn");
+            }
 
 
             
         }
 
+    }
+
+    public void CheckPoint(GameObject newCheckPoint)
+    {
+        checkPoint = newCheckPoint.transform.position;
     }
 
     /// <summary>
@@ -89,7 +100,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        this.transform.position = startPoint.position;
     }
 
     // Update is called once per frame
