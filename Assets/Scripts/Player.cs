@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     public bool shooting;
 
-    public Vector3 checkPoint;
+    public Transform checkPoint;
     public Transform startPoint;
     public bool checkPointSet;
     
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
 
     public void CheckPoint(GameObject newCheckPoint)
     {
-        checkPoint = newCheckPoint.transform.position;
+        checkPoint.transform.position = newCheckPoint.transform.position;
         checkPointSet = true;
     }
 

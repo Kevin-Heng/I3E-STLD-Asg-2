@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager Instance;
 
+    //----------------------------------- Player ----------------------------------------// 
     /// <summary>
     /// To reference Player class on Player Capsule
     /// </summary>
     public Player player;
-    //----------------------------------- Player ----------------------------------------// 
+
     public int playerHp;
     public int originalPlayerHp = 100;
 

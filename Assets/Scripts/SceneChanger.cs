@@ -56,6 +56,7 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
             Physics.SyncTransforms();
 
+            //--------------------------------------------- Reset player info --------------------------------------------------------------------------------
             GameManager.Instance.playerHp = GameManager.Instance.originalPlayerHp;
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
 
@@ -86,7 +87,6 @@ public class SceneChanger : MonoBehaviour
         Cursor.visible = false;
 
         GameManager.Instance.burningFrame.SetActive(false);
-
         GameManager.Instance.gameObject.SetActive(true);
         GameManager.Instance.player.gameObject.SetActive(true);
         GameManager.Instance.playerUI.SetActive(true);
@@ -96,17 +96,32 @@ public class SceneChanger : MonoBehaviour
 
         GameManager.Instance.deathScreen.SetActive(false);
 
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
+            GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.startPoint.transform.eulerAngles;
             Physics.SyncTransforms();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
-            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.checkPoint;
-            Physics.SyncTransforms();            
+            if (!GameManager.Instance.player.checkPointSet)
+            {
+                GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
+                GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.startPoint.transform.eulerAngles;
+                Physics.SyncTransforms();
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.checkPoint.position;
+                GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.checkPoint.eulerAngles;
+                Physics.SyncTransforms();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+
     }
 
 }

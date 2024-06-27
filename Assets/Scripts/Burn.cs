@@ -25,6 +25,7 @@ public class Burn : MonoBehaviour
 
     public float burnInterval;
 
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -40,7 +41,8 @@ public class Burn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0)
+
+            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0 && GameManager.Instance.playerHp != GameManager.Instance.originalPlayerHp)
             {
                 StartCoroutine(BurnDOT());
             }
