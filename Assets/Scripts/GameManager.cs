@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject burningFrame;
     public bool burning;
+
+    public GameObject bleedingFrame;
+
+    public Transform startPoint;
     //----------------------------------- Gun ----------------------------------------// 
     /// <summary>
     /// UI text for current ammo in the rifle's magazine
@@ -99,7 +103,6 @@ public class GameManager : MonoBehaviour
         if (playerHp <= 0) //when player hp reaches 0 and below
         {
             AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
-            player.gameObject.SetActive(false);
             playerUI.SetActive(false);
             DeathScreen();
         }
@@ -110,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         burningFrame.SetActive(false);
         burning = false;
+        bleedingFrame.SetActive(false);
 
         deathScreen.gameObject.SetActive(true);
 
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         playerHp = originalPlayerHp;
-        player.shooting = false;
+        Time.timeScale = 0;
     }
 
     //----------------------------------- Gun ----------------------------------------// 

@@ -180,6 +180,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
         attack = false;
+        GameManager.Instance.bleedingFrame.SetActive(false);
     }
 
 

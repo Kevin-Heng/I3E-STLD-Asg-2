@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
             Destroy(projectile);
             GameManager.Instance.ReducePlayerHp(damage, playerHit,  playerDie, fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
+            GameManager.Instance.bleedingFrame.SetActive(true);
             if(GameManager.Instance.playerHp <= 0)
             {
                 GameManager.Instance.DeathScreen();

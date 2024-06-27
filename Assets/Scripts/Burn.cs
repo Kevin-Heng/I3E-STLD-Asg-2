@@ -1,3 +1,9 @@
+/*
+ * Author: Kevin Heng
+ * Date: 26/06/2024
+ * Description: The Burn class is used to damage the player when he touches something that burns enemy
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,7 +91,7 @@ public class Burn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.burningFrame.SetActive(false);
+
     }
 
     // Update is called once per frame

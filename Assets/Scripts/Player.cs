@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     public bool shooting;
 
     public Transform checkPoint;
-    public Transform startPoint;
     public bool checkPointSet;
     
 
@@ -102,7 +101,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = startPoint.position;
+        this.transform.position = GameManager.Instance.startPoint.position;
     }
 
     // Update is called once per frame
@@ -128,6 +127,5 @@ public class Player : MonoBehaviour
                 Debug.Log(hitInfo.transform.name);
             }
         }
-
     }
 }

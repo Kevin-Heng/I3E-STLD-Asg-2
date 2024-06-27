@@ -32,7 +32,6 @@ public class SceneChanger : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            GameManager.Instance.player.gameObject.SetActive(true);
             GameManager.Instance.playerUI.SetActive(true);
             GameManager.Instance.deathScreen.SetActive(false);
             GameManager.Instance.burningFrame.SetActive(false);
@@ -44,16 +43,17 @@ public class SceneChanger : MonoBehaviour
 
     public void StartScene()
     {
+        Debug.Log("Starting");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         if(GameManager.Instance != null)
         {
-
-            GameManager.Instance.player.gameObject.SetActive(true);
+            Time.timeScale = 1.0f;
             GameManager.Instance.playerUI.SetActive(true);
             GameManager.Instance.deathScreen.SetActive(false);
 
-            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
+            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
+            GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.startPoint.transform.eulerAngles;
             Physics.SyncTransforms();
 
             //--------------------------------------------- Reset player info --------------------------------------------------------------------------------
@@ -83,12 +83,13 @@ public class SceneChanger : MonoBehaviour
 
     public void Restart()
     {
+        Time.timeScale = 1.0f;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         GameManager.Instance.burningFrame.SetActive(false);
-        GameManager.Instance.gameObject.SetActive(true);
-        GameManager.Instance.player.gameObject.SetActive(true);
+        GameManager.Instance.bleedingFrame.SetActive(false);
         GameManager.Instance.playerUI.SetActive(true);
 
         GameManager.Instance.playerHp = GameManager.Instance.originalPlayerHp;
@@ -98,8 +99,8 @@ public class SceneChanger : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
-            GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.startPoint.transform.eulerAngles;
+            GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
+            GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.startPoint.transform.eulerAngles;
             Physics.SyncTransforms();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -107,8 +108,8 @@ public class SceneChanger : MonoBehaviour
         {
             if (!GameManager.Instance.player.checkPointSet)
             {
-                GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.startPoint.transform.position;
-                GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.startPoint.transform.eulerAngles;
+                GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
+                GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.startPoint.transform.eulerAngles;
                 Physics.SyncTransforms();
                 SceneManager.LoadScene(1);
             }
@@ -120,8 +121,6 @@ public class SceneChanger : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        
-
     }
 
 }
