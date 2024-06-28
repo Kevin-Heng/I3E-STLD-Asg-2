@@ -16,7 +16,7 @@ public class MedKit : Interact
 
     public override void InteractObject()
     {
-        if (GameManager.Instance.playerHp < 100)
+        if (GameManager.Instance.playerHp < GameManager.Instance.originalPlayerHp)
         {
             HealPlayer();
             base.InteractObject();
@@ -24,7 +24,7 @@ public class MedKit : Interact
     }
     public void HealPlayer()
     {
-        int hpDiff = 100 - GameManager.Instance.playerHp; 
+        int hpDiff = GameManager.Instance.originalPlayerHp - GameManager.Instance.playerHp; 
         if(hpDiff >= healHpAmt)
         {
             Debug.Log("total heal: " + hpDiff);
