@@ -43,6 +43,14 @@ public class Projectile : MonoBehaviour
             GameManager.Instance.ReducePlayerHp(damage, playerHit,  playerDie, fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             GameManager.Instance.bleedingFrame.SetActive(true);
+            if(GameManager.Instance.playerHp <= 30)
+            {
+                GameManager.Instance.playerHpText.color = Color.red;
+            }
+            else
+            {
+                GameManager.Instance.playerHpText.color = Color.white;
+            }
             if(GameManager.Instance.playerHp <= 0)
             {
                 GameManager.Instance.DeathScreen();

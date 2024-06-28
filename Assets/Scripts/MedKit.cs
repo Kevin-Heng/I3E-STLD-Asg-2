@@ -37,6 +37,10 @@ public class MedKit : Interact
             
         }
         AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.4f);
+        if(GameManager.Instance.playerHp > 30)
+        {
+            GameManager.Instance.playerHpText.color = Color.white;
+        }
         GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
 
     }

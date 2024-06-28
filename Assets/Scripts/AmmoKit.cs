@@ -7,10 +7,13 @@ public class AmmoKit : Interact
 {
     public int rifleAmmoAmt;
     public int rLAmmoAmt;
+
     public AudioClip pickUp;
     [SerializeField] Transform fpsCam;
+
     public Rifle rifle;
     public RocketLauncher rL;
+
     public TextMeshProUGUI interactText;
 
     public override void InteractObject()
@@ -26,8 +29,13 @@ public class AmmoKit : Interact
         if(rifleAmmoDiff > 0)
         {
             GameManager.Instance.currentRifleAmmoText.text = rifle.currentAmmo.ToString();
+            GameManager.Instance.currentRifleAmmoText.color = Color.white;
         }
         rifle.totalAmmo += rifleAmmoAmt;
+        if(rifle.totalAmmo > 0)
+        {
+            GameManager.Instance.totalRifleAmmoText.color = Color.white;
+        }
         GameManager.Instance.totalRifleAmmoText.text = rifle.totalAmmo.ToString();
 
 
@@ -36,8 +44,13 @@ public class AmmoKit : Interact
         if(rLAmmoDiff > 0)
         {
             GameManager.Instance.currentRLAmmoText.text = rL.currentAmmo.ToString();
+            GameManager.Instance.currentRLAmmoText.color = Color.white;
         }
         rL.totalAmmo += rLAmmoAmt;
+        if (rL.totalAmmo > 0)
+        {
+            GameManager.Instance.currentRLAmmoText.color = Color.white;
+        }
         GameManager.Instance.totalRLAmmoText.text = rL.totalAmmo.ToString();
         
         AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);

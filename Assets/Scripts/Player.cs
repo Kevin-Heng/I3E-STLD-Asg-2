@@ -7,6 +7,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,7 +27,12 @@ public class Player : MonoBehaviour
 
     public Transform checkPoint;
     public bool checkPointSet;
-    
+
+    public TextMeshProUGUI interactText;
+
+    public GameObject pauseScreen;
+    public bool isPaused;
+
 
     /// <summary>
     /// Function to update which gun is currently equipped
@@ -76,6 +82,33 @@ public class Player : MonoBehaviour
 
     }
 
+    void OnPause()
+    {
+        isPaused = !isPaused;
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Debug.Log("resume");
+        }
+        pauseScreen.SetActive(isPaused);
+        
+    }
+
+    void OnResume()
+    {
+                    Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Debug.Log("resume");
+    }
     public void CheckPoint(GameObject newCheckPoint)
     {
         checkPoint.transform.position = newCheckPoint.transform.position;
@@ -102,6 +135,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         this.transform.position = GameManager.Instance.startPoint.position;
+        interactText.enabled = false;
     }
 
     // Update is called once per frame
@@ -124,8 +158,13 @@ public class Player : MonoBehaviour
         {
             if (hitInfo.transform.TryGetComponent<Interact>(out currentInteractable))
             {
-                Debug.Log(hitInfo.transform.name);
+                interactText.enabled = true;
+                Debug.Log("interact");
             }
+        }
+        else
+        {
+            interactText.enabled = false;
         }
     }
 }

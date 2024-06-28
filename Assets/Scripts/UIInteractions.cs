@@ -10,10 +10,21 @@ using UnityEngine;
 
 public class UIInteractions : MonoBehaviour
 {
+    
+
     public void ExitGame()
     {
         Application.Quit();
         Debug.Log("exit game");
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        GameManager.Instance.player.pauseScreen.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("resume");
     }
 
     // Start is called before the first frame update

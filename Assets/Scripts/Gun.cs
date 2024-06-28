@@ -92,6 +92,8 @@ public class Gun : MonoBehaviour
     /// </summary>
     public bool isEquipped;
 
+    public GameObject ammoIcon;
+
     Enemy enemy;
 
     public int maxNumRange;

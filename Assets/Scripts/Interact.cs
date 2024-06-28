@@ -10,9 +10,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Interact : MonoBehaviour
+public class Interact : SceneChanger
 {
-    public int sceneIndex;
     public GameObject spawnObject;
 
     public virtual void InteractObject()
@@ -20,10 +19,9 @@ public class Interact : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ChangeScene()
+    public override void ChangeScene()
     {
-        SceneManager.LoadScene(sceneIndex);
-        GameManager.Instance.burningFrame.SetActive(false);
+        base.ChangeScene();
     }
     
     public void SetSpawnPoint()

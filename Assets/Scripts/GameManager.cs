@@ -99,7 +99,15 @@ public class GameManager : MonoBehaviour
     public void ReducePlayerHp(int damage, AudioClip playerHit, AudioClip playerDie, Transform fpsCam)
     {
         playerHp -= damage; //reduce player hp by specified damage done by enemy
-        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 0.6f); //audio clip to be played when hurt
+        AudioSource.PlayClipAtPoint(playerHit, fpsCam.position, 1f); //audio clip to be played when hurt
+        if(playerHp <= 30)
+        {
+            playerHpText.color = Color.red;
+        }
+        else
+        {
+            playerHpText.color = Color.white;
+        }
         if (playerHp <= 0) //when player hp reaches 0 and below
         {
             AudioSource.PlayClipAtPoint(playerDie, fpsCam.position, 1f); //play death audio
@@ -135,10 +143,18 @@ public class GameManager : MonoBehaviour
         if (rifle.isEquipped) //rifle is equipped
         {
             currentRifleAmmoText.text = currentAmmo.ToString(); //edit current ammo UI text for rifle
+            if(currentAmmo <= 10)
+            {
+                currentRifleAmmoText.color = Color.red;
+            }
         }
         else //rocket launcher is equipped
         {
             currentRLAmmoText.text = rL.currentAmmo.ToString(); //edit current ammo UI text for rocket launcher
+            if(currentAmmo <= 2)
+            {
+                currentRLAmmoText.color = Color.red;
+            }
         }
     }
 
@@ -165,11 +181,13 @@ public class GameManager : MonoBehaviour
         {
             currentRifleAmmoText.text = currentAmmo.ToString(); //update current rifle ammo
             totalRifleAmmoText.text = totalAmmo.ToString(); //update total rifle ammo
+            currentRifleAmmoText.color = Color.white;
         }
         else //rocket launcher is equipped
         {
             currentRLAmmoText.text = currentAmmo.ToString(); //update current rocket launcher ammo
             totalRLAmmoText.text = totalAmmo.ToString(); //update total rocket launcher ammo
+            currentRLAmmoText.color = Color.white;
         }
         
     }
@@ -188,6 +206,17 @@ public class GameManager : MonoBehaviour
         if (totalAmmo == 0 && currentAmmo == 0) //no ammo left at all
         {
             AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.5f); //audio is played
+            if (rifle.isEquipped)
+            {
+                currentRifleAmmoText.color = Color.red;
+                totalRifleAmmoText.color = Color.red;
+            }
+            else
+            {
+                currentRLAmmoText.color = Color.red;
+                totalRLAmmoText.color = Color.red;
+            }
+
         }
     }
     //--------------------------------------------------------------------------------//
@@ -205,10 +234,13 @@ public class GameManager : MonoBehaviour
             //show rifle UI
             currentRifleAmmoText.enabled = true;
             totalRifleAmmoText.enabled = true;
+            rifle.ammoIcon.SetActive(true);
 
             //hide rocket launcher UI
             currentRLAmmoText.enabled = false;
             totalRLAmmoText.enabled = false;
+            rL.ammoIcon.SetActive(false);
+
             rL.ChangeSpeed(player); //change player speed
         }
     }
@@ -226,10 +258,13 @@ public class GameManager : MonoBehaviour
             //hide rifle UI
             currentRifleAmmoText.enabled = false;
             totalRifleAmmoText.enabled = false;
+            rifle.ammoIcon.SetActive(false);
 
             //show rocket launcher UI
             currentRLAmmoText.enabled = true;
             totalRLAmmoText.enabled = true;
+            rL.ammoIcon.SetActive(true);
+
             rL.ChangeSpeed(player); //change player speed
         }
     }
@@ -243,11 +278,14 @@ public class GameManager : MonoBehaviour
         totalRifleAmmoText.text = rifle.totalAmmo.ToString(); //update rifle total ammo
 
         currentRLAmmoText.text = rL.currentAmmo.ToString(); //update rocket launcher ammo
-        totalRLAmmoText.text += rL.totalAmmo.ToString(); //update rocket launcher total ammo
+        totalRLAmmoText.text = rL.totalAmmo.ToString();//update rocket launcher total ammo
+        currentRLAmmoText.color = Color.white;
+        totalRLAmmoText.color = Color.white;
 
         //hide rocket launcher UI
         currentRLAmmoText.enabled = false;
         totalRLAmmoText.enabled = false;
+        rL.ammoIcon.SetActive(false);
 
         playerHp = originalPlayerHp;
         playerHpText.text = playerHp.ToString();
