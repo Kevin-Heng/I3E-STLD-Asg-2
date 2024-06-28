@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -90,6 +91,10 @@ public class Enemy : MonoBehaviour
     /// Enemy hp
     /// </summary>
     public int enemyHp;
+
+    public int originalEnemyHp;
+
+    public TextMeshProUGUI enemyHpText;
 
     public int projectileDamage;
 
@@ -189,7 +194,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyHp = originalEnemyHp;
+        enemyHpText.text = enemyHp.ToString() + "/" + originalEnemyHp.ToString();
     }
 
     // Update is called once per frame

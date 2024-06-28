@@ -154,8 +154,9 @@ public class Gun : MonoBehaviour
         if (hitInfo.transform.TryGetComponent<Enemy>(out enemy)) //raycast hits an enemy 
         {
             enemy.enemyHp -= damage; //reduce enemy hp by gun damage
-                                     //enemy dies when hp is less than or equal to 0
-            if (enemy.enemyHp <= 0)
+            enemy.enemyHpText.text = enemy.enemyHp.ToString() + "/" + enemy.originalEnemyHp.ToString();
+            
+            if (enemy.enemyHp <= 0) //enemy dies when hp is less than or equal to 0
             {
                 Destroy(enemy.gameObject);
                 RandomDrop();
