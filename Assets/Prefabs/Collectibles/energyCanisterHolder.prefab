@@ -181,11 +181,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: energyCanister empty
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 705627839465837188, guid: a53bc3a428c6d7645933879cb21db2dd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6798220458919974893, guid: a53bc3a428c6d7645933879cb21db2dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2447362707787446710}
   m_SourcePrefab: {fileID: 100100000, guid: a53bc3a428c6d7645933879cb21db2dd, type: 3}
+--- !u!1 &2777734114859697967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6798220458919974893, guid: a53bc3a428c6d7645933879cb21db2dd, type: 3}
+  m_PrefabInstance: {fileID: 8706688471773057218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2447362707787446710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2777734114859697967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b44a067ca399114bbaf3df8f08b87a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 0
+  startSceneIndex: 0
+  spawnObject: {fileID: 0}
+  pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
+  fpsCam: {fileID: 0}
 --- !u!4 &3298797500277857685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6130509400886447447, guid: a53bc3a428c6d7645933879cb21db2dd, type: 3}

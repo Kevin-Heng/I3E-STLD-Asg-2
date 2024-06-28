@@ -33,6 +33,32 @@ public class Player : MonoBehaviour
     public GameObject pauseScreen;
     public bool isPaused;
 
+    public bool circuitBoard;
+    public bool screw;
+    public bool canister;
+    public bool metalBoard;
+
+
+    public void UpdateCircuitBoard(bool pickedUp)
+    {
+        circuitBoard = pickedUp;
+    }
+
+    public void UpdateScrew(bool pickedUp)
+    {
+        screw = pickedUp;
+    }
+
+    public void UpdateCanister(bool pickedUp)
+    {
+        canister = pickedUp;
+    }
+
+    public void UpdateMetalBoard(bool pickedUp)
+    {
+        metalBoard = pickedUp;
+    }
+
 
     /// <summary>
     /// Function to update which gun is currently equipped
@@ -75,12 +101,14 @@ public class Player : MonoBehaviour
                 currentInteractable.SetSpawnPoint();
                 Debug.Log("Set spawn");
             }
-
-
-            
+            else
+            {
+                currentInteractable.Interaction();
+            }
         }
 
     }
+
 
     void OnPause()
     {
@@ -104,10 +132,10 @@ public class Player : MonoBehaviour
 
     void OnResume()
     {
-                    Time.timeScale = 1f;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Debug.Log("resume");
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("resume");
     }
     public void CheckPoint(GameObject newCheckPoint)
     {
@@ -135,7 +163,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         this.transform.position = GameManager.Instance.startPoint.position;
-        interactText.enabled = false;
     }
 
     // Update is called once per frame
@@ -158,13 +185,15 @@ public class Player : MonoBehaviour
         {
             if (hitInfo.transform.TryGetComponent<Interact>(out currentInteractable))
             {
-                interactText.enabled = true;
-                Debug.Log("interact");
+                interactText.text = "Press E to interact";
+                Debug.Log(hitInfo.transform.name);
+            }
+            else
+            {
+                interactText.text = "";
             }
         }
-        else
-        {
-            interactText.enabled = false;
-        }
+
+
     }
 }

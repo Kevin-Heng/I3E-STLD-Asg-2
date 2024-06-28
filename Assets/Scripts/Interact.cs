@@ -18,7 +18,11 @@ public class Interact : SceneChanger
     {       
         Destroy(gameObject);
     }
-
+    
+    public virtual void Interaction()
+    {
+        Debug.Log("Interact");
+    }
     public override void ChangeScene()
     {
         base.ChangeScene();

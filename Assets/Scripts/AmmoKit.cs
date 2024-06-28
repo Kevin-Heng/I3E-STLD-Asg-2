@@ -14,8 +14,6 @@ public class AmmoKit : Interact
     public Rifle rifle;
     public RocketLauncher rL;
 
-    public TextMeshProUGUI interactText;
-
     public override void InteractObject()
     {
         IncreaseGunAmmo();

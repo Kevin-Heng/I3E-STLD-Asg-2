@@ -79,5 +79,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5880961309068274665}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7235421815531557831}
   m_SourcePrefab: {fileID: 100100000, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+--- !u!1 &1747186050114935534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+  m_PrefabInstance: {fileID: 1512692314656696255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5880961309068274665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747186050114935534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60277083722a2b74898168896e12725b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 0
+  startSceneIndex: 0
+  spawnObject: {fileID: 0}
+  pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
+  fpsCam: {fileID: 0}
+--- !u!64 &7235421815531557831
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747186050114935534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8906563331131944060, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}

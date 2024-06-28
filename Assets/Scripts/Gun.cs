@@ -160,6 +160,7 @@ public class Gun : MonoBehaviour
             {
                 Destroy(enemy.gameObject);
                 RandomDrop();
+                GameManager.Instance.bleedingFrame.SetActive(false);
             }
             Debug.Log(enemy.name);
         }

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int originalPlayerHp = 100;
 
     public TextMeshProUGUI playerHpText;
+    public TextMeshProUGUI errorText;
 
     public Transform fpsCam;
 
