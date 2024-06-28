@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 328.00864
+      value: 302.7053
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.32
+      value: 0.259
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.734858
+      value: 32.119816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,9 +60,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46be5698e111aa9439c5bd9333133de5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
       propertyPath: m_Name
       value: circuitBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fd6813806cdc4a439502d9bef087a49, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
