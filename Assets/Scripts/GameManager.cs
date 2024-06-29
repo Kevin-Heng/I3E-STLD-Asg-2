@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour
     public void DeathScreen()
     {
         AudioManager.Instance.deathMusic.Play();
+        AudioManager.Instance.mainMenu.Stop();
+
         burningFrame.SetActive(false);
         burning = false;
         bleedingFrame.SetActive(false);
@@ -194,33 +196,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-
-
-    /// <summary>
-    /// Function to play audio when there is no ammo at all to use in the gun
-    /// </summary>
-    /// <param name="currentAmmo"> Current ammo inside gun magazine </param>
-    /// <param name="totalAmmo"> Total ammo left to use in gun </param>
-    /// <param name="emptyMag"> Audio sound for empty gun </param>
-    /// <param name="fpsCam"> Main camera on player capsule </param>
-    public void NoAmmo(ref int currentAmmo, ref int totalAmmo, AudioClip emptyMag, Transform fpsCam)
-    {
-        if (totalAmmo == 0 && currentAmmo == 0) //no ammo left at all
-        {
-            AudioSource.PlayClipAtPoint(emptyMag, fpsCam.position, 0.5f); //audio is played
-            if (rifle.isEquipped)
-            {
-                currentRifleAmmoText.color = Color.red;
-                totalRifleAmmoText.color = Color.red;
-            }
-            else
-            {
-                currentRLAmmoText.color = Color.red;
-                totalRLAmmoText.color = Color.red;
-            }
-
-        }
-    }
     //--------------------------------------------------------------------------------//
 
     public void EquipWeapon1()

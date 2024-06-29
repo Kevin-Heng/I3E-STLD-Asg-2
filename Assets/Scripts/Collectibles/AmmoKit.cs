@@ -49,8 +49,8 @@ public class AmmoKit : Interact
             GameManager.Instance.currentRLAmmoText.color = Color.white;
         }
         GameManager.Instance.totalRLAmmoText.text = rL.totalAmmo.ToString();
-        
-        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUp, fpsCam.position, 0.7f);
+
+        AudioManager.Instance.pickUp.Play();
 
     }
 

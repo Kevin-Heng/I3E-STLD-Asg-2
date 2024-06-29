@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 
 
     public TextMeshProUGUI interactText;
+    public TextMeshProUGUI objective1;
+    public TextMeshProUGUI objective2;
 
     public GameObject pauseScreen;
     public bool isPaused;
@@ -53,6 +55,10 @@ public class Player : MonoBehaviour
     public void UpdateCanister(bool pickedUp)
     {
         canister = pickedUp;
+        if(canister)
+        {
+            objective1.text = "<s>Collect empty energy canister in ship</s>";
+        }
     }
 
     public void UpdateMetalBoard(bool pickedUp)
@@ -72,6 +78,7 @@ public class Player : MonoBehaviour
     void OnShoot()
     {
         shooting = !shooting;
+        currentGun.OutOfAmmo();
     }
     /// <summary>
     /// Player input to reload gun (R)
@@ -80,6 +87,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("reload");
         currentGun.Reloading();
+        currentGun.OutOfAmmo();
     }
 
     /// <summary>
@@ -100,7 +108,8 @@ public class Player : MonoBehaviour
             else if (currentInteractable.CompareTag("RespawnPoint"))
             {
                 currentInteractable.SetSpawnPoint();
-                AudioSource.PlayClipAtPoint(AudioManager.Instance.checkPointSound, fpsCam.position, .65f);
+                AudioManager.Instance.checkPointSound.Play();
+                Debug.Log("check point set");
             }
             else
             {
@@ -187,7 +196,6 @@ public class Player : MonoBehaviour
             if (hitInfo.transform.TryGetComponent<Interact>(out currentInteractable))
             {
                 interactText.text = "Press E to interact";
-                Debug.Log(hitInfo.transform.name);
             }
             else
             {

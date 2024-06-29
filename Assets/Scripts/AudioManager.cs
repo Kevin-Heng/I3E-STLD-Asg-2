@@ -14,42 +14,46 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public AudioClip placeObject;
-    public AudioClip pickUp;
-    public AudioClip pickUpMedKit;
-    public AudioClip checkPointSound;
+    [Header("Collectibles")]
+    public AudioSource placeObject;
+    public AudioSource pickUp;
+    public AudioSource pickUpMedKit;
+    public AudioSource checkPointSound;
 
-    //----------------------------------------------- Gun audio -------------------------------------------------
+    [Header("Gun audio")]
     /// <summary>
     /// Audio when bullet is shot
     /// </summary>
-    public AudioClip gunShot;
+    public AudioSource gunShot;
+
     /// <summary>
     /// Audio when rifle bullet is shot
     /// </summary>
-    public AudioClip rifleShot;
+    public AudioSource rifleShot;
+
     /// <summary>
     /// Audio when rocket launcher missile is shot
     /// </summary>
-    public AudioClip rLShot;
+    public AudioSource rLShot;
+
     /// <summary>
     /// Audio when reloading gun
     /// </summary>
-    public AudioClip gunReload;
+    public AudioSource gunReload;
     /// <summary>
     /// Audio when rifle is reloading
     /// </summary>
-    public AudioClip rifleReload;
+    public AudioSource rifleReload;
     /// <summary>
     /// Audio when rocket launcher is reloading
     /// </summary>
-    public AudioClip rLReload;
+    public AudioSource rLReload;
     /// <summary>
     /// Audio when there is no ammo left in gun
     /// </summary>
-    public AudioClip emptyMag;
-    //-----------------------------------------------------------------------------------------------------------
+    public AudioSource emptyMag;
 
+    [Header("Player")]
     /// <summary>
     /// Audio played when enemy is hit by projectile
     /// </summary>
@@ -60,9 +64,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerDie;
 
     public AudioSource deathMusic;
+    public AudioSource mainMenu;
 
     public AudioClip playerBurn;
 
+    [Header("Audio mixer")]
     public Slider masterVol, musicVol, sfxVol;
     public AudioMixer mainAudioMixer;
 
@@ -86,7 +92,9 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeMasterVol()
     {
+
         mainAudioMixer.SetFloat("Master Volume", masterVol.value);
+
     }
 
     public void ChangeMusicVol()
@@ -98,6 +106,9 @@ public class AudioManager : MonoBehaviour
     {
         mainAudioMixer.SetFloat("SFX Volume", sfxVol.value);
     }
+
+
+
 
     // Start is called before the first frame update
     void Start()

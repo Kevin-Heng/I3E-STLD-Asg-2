@@ -18,7 +18,7 @@ public class SceneChanger : MonoBehaviour
     /// <summary>
     /// Number is set 1 to bring player from start menu to first scene
     /// </summary>
-    public int startSceneIndex;
+    int startSceneIndex = 1;
 
     /// <summary>
     /// Function to change scenes
@@ -38,8 +38,15 @@ public class SceneChanger : MonoBehaviour
 
             GameManager.Instance.burningFrame.SetActive(false);
 
+            GameManager.Instance.player.pauseScreen.SetActive(false);
+
             //turn off death music
             AudioManager.Instance.deathMusic.Stop();
+
+            AudioManager.Instance.mainMenu.Stop();
+            AudioManager.Instance.mainMenu.Play();
+
+
         }
         else
         {
@@ -51,6 +58,7 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.burningFrame.SetActive(false);
                      
         }
+
         SceneManager.LoadScene(sceneIndex);
 
     }
@@ -138,6 +146,8 @@ public class SceneChanger : MonoBehaviour
         //turn off death music
         AudioManager.Instance.deathMusic.Stop();
 
+
+
         if (SceneManager.GetActiveScene().buildIndex == 1) //if player dies inside spaceship, check point is automatically set to start point
         {
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
@@ -147,14 +157,14 @@ public class SceneChanger : MonoBehaviour
         }
         else //if player dies in any other scenes
         {
-            if (!GameManager.Instance.player.checkPointSet) //if player has check point set
+            if (!GameManager.Instance.player.checkPointSet) //if player has no check point set, , player spawns back at start point inside spaceship
             {
                 GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
                 GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.startPoint.transform.eulerAngles;
                 Physics.SyncTransforms();
                 SceneManager.LoadScene(1);
             }
-            else //if player never set check point, player spawns back at start point inside spaceship
+            else //if player sets check point, player spawns at check point
             {
                 GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.player.checkPoint.position;
                 GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.player.checkPoint.eulerAngles;

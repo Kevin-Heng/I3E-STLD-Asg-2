@@ -100,15 +100,29 @@ public class Gun : MonoBehaviour
             {
                 GameManager.Instance.ReduceAmmo(ref currentAmmo);
                 muzzleFlash.Play();
-                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
+                //AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
+                AudioManager.Instance.gunShot.Play();
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact, destroyTime); //remove the variable from hierarchy
                 
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function 
+                    if(totalAmmo == 0)
+                    {
+                        AudioManager.Instance.emptyMag.Play();
+                        if (isEquipped)
+                        {
+                            GameManager.Instance.currentRifleAmmoText.color = Color.red;
+                            GameManager.Instance.totalRifleAmmoText.color = Color.red;
+                        }
+                        else
+                        {
+                            GameManager.Instance.currentRLAmmoText.color = Color.red;
+                            GameManager.Instance.totalRLAmmoText.color = Color.red;
+                        }
+                    }
                 }
-                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
 
                 DamageEnemy(damage, hitInfo);
             }
@@ -120,12 +134,27 @@ public class Gun : MonoBehaviour
             {
                 GameManager.Instance.ReduceAmmo(ref currentAmmo);
                 muzzleFlash.Play();
-                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
+                //AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
+                AudioManager.Instance.gunShot.Play();
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function runs
+                    if (totalAmmo == 0)
+                    {
+                        AudioManager.Instance.emptyMag.Play();
+                        if (isEquipped)
+                        {
+                            GameManager.Instance.currentRifleAmmoText.color = Color.red;
+                            GameManager.Instance.totalRifleAmmoText.color = Color.red;
+                        }
+                        else
+                        {
+                            GameManager.Instance.currentRLAmmoText.color = Color.red;
+                            GameManager.Instance.totalRLAmmoText.color = Color.red;
+                        }
+                    }
                 }
-                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
+                
 
             }
 
@@ -178,7 +207,7 @@ public class Gun : MonoBehaviour
         {
             if (totalAmmo > 0) //reload gun if there is enough ammo
             {
-                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunReload, fpsCam.position, 1f);
+                AudioManager.Instance.gunReload.Play();
                 isReloading = true; //player is reloading
                 yield return new WaitForSeconds(reloadTime); //pauses the function for the specified reload time, then the code below this statement will run
                 GameManager.Instance.ReloadGun(ref currentAmmo, ref magazineAmmo, ref totalAmmo);
@@ -205,8 +234,20 @@ public class Gun : MonoBehaviour
     }
     public void OutOfAmmo()
     {
-        if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(0))
-            GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
+        if (totalAmmo == 0 && currentAmmo == 0)
+        {
+            AudioManager.Instance.emptyMag.Play();
+            if (isEquipped)
+            {
+                GameManager.Instance.currentRifleAmmoText.color = Color.red;
+                GameManager.Instance.totalRifleAmmoText.color = Color.red;
+            }
+            else
+            {
+                GameManager.Instance.currentRLAmmoText.color = Color.red;
+                GameManager.Instance.totalRLAmmoText.color = Color.red;
+            }
+        }
     }
 
     // Start is called before the first frame update

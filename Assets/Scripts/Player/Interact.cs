@@ -17,7 +17,7 @@ public class Interact : SceneChanger
     public virtual void InteractObject()
     {       
         Destroy(gameObject);
-        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUp, GameManager.Instance.fpsCam.position, 0.4f);
+        AudioManager.Instance.pickUp.Play();
     }
     
     public virtual void Interaction()
@@ -32,6 +32,7 @@ public class Interact : SceneChanger
     public void SetSpawnPoint()
     {
         GameManager.Instance.player.CheckPoint(spawnObject);
+        Debug.Log(spawnObject.transform.name);
     }
 
     // Start is called before the first frame update

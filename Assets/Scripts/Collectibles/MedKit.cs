@@ -36,7 +36,7 @@ public class MedKit : Interact
             GameManager.Instance.playerHp += hpDiff;
             
         }
-        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUpMedKit, fpsCam.position, 0.275f);
+        AudioManager.Instance.pickUpMedKit.Play();
         if(GameManager.Instance.playerHp > 30)
         {
             GameManager.Instance.playerHpText.color = Color.white;
