@@ -1415,7 +1415,6 @@ MonoBehaviour:
   sceneIndex: 0
   startSceneIndex: 0
   spawnObject: {fileID: 0}
-  pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
   fpsCam: {fileID: 0}
 --- !u!1 &1558691090
 GameObject:
@@ -2135,6 +2134,10 @@ PrefabInstance:
     - target: {fileID: 566472278411555448, guid: 7f49c676d95b7414590ceeda70f007bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337850122818812271, guid: 7f49c676d95b7414590ceeda70f007bd, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4965232924265655268, guid: 7f49c676d95b7414590ceeda70f007bd, type: 3}
       propertyPath: m_Name

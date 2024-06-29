@@ -10,7 +10,18 @@ using UnityEngine;
 
 public class UIInteractions : MonoBehaviour
 {
-    
+    public GameObject optionsPanel;
+
+    public void Options()
+    {
+        optionsPanel.SetActive(true);
+        Debug.Log("Options");
+    }
+
+    public void Close()
+    {
+        optionsPanel.SetActive(false);
+    }
 
     public void ExitGame()
     {
@@ -26,6 +37,8 @@ public class UIInteractions : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("resume");
     }
+
+
 
     // Start is called before the first frame update
     void Start()

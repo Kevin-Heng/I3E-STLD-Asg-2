@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalPosition.x
@@ -124,5 +124,4 @@ MonoBehaviour:
   sceneIndex: 0
   startSceneIndex: 0
   spawnObject: {fileID: 0}
-  pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
   fpsCam: {fileID: 0}

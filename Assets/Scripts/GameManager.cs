@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 
     public void DeathScreen()
     {
+        AudioManager.Instance.deathMusic.Play();
         burningFrame.SetActive(false);
         burning = false;
         bleedingFrame.SetActive(false);

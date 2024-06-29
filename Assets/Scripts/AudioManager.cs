@@ -7,6 +7,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip pickUpMedKit;
     public AudioClip checkPointSound;
 
-    //Gun audio
+    //----------------------------------------------- Gun audio -------------------------------------------------
     /// <summary>
     /// Audio when bullet is shot
     /// </summary>
@@ -46,7 +48,7 @@ public class AudioManager : MonoBehaviour
     /// Audio when there is no ammo left in gun
     /// </summary>
     public AudioClip emptyMag;
-
+    //-----------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Audio played when enemy is hit by projectile
@@ -57,7 +59,12 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public AudioClip playerDie;
 
+    public AudioSource deathMusic;
+
     public AudioClip playerBurn;
+
+    public Slider masterVol, musicVol, sfxVol;
+    public AudioMixer mainAudioMixer;
 
 
     /// <summary>
@@ -77,10 +84,25 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void ChangeMasterVol()
+    {
+        mainAudioMixer.SetFloat("Master Volume", masterVol.value);
+    }
+
+    public void ChangeMusicVol()
+    {
+        mainAudioMixer.SetFloat("Music Volume", musicVol.value);
+    }
+
+    public void ChangeSFXVol()
+    {
+        mainAudioMixer.SetFloat("SFX Volume", sfxVol.value);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

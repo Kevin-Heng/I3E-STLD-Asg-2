@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
             else if (currentInteractable.CompareTag("RespawnPoint"))
             {
                 currentInteractable.SetSpawnPoint();
-                AudioSource.PlayClipAtPoint(AudioManager.Instance.checkPointSound, fpsCam.position, 1f);
+                AudioSource.PlayClipAtPoint(AudioManager.Instance.checkPointSound, fpsCam.position, .65f);
             }
             else
             {

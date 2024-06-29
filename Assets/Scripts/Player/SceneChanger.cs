@@ -37,6 +37,9 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.deathScreen.SetActive(false);
 
             GameManager.Instance.burningFrame.SetActive(false);
+
+            //turn off death music
+            AudioManager.Instance.deathMusic.Stop();
         }
         else
         {
@@ -89,15 +92,13 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.currentRLAmmoText.text = GameManager.Instance.rL.currentAmmo.ToString(); //update rocket launcher ammo
             GameManager.Instance.currentRLAmmoText.color = Color.white;
 
+            //turn off death music
+            AudioManager.Instance.deathMusic.Stop();
 
+            
+        }
+        SceneManager.LoadScene(startSceneIndex);
 
-            SceneManager.LoadScene(startSceneIndex);
-        }
-        else
-        {
-            SceneManager.LoadScene(startSceneIndex);
-        }
-        
     }
 
     /// <summary>
@@ -133,6 +134,9 @@ public class SceneChanger : MonoBehaviour
 
         //turn off death screen in previous scene
         GameManager.Instance.deathScreen.SetActive(false);
+
+        //turn off death music
+        AudioManager.Instance.deathMusic.Stop();
 
         if (SceneManager.GetActiveScene().buildIndex == 1) //if player dies inside spaceship, check point is automatically set to start point
         {
