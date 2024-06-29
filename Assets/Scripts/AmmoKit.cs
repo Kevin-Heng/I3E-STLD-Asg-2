@@ -8,7 +8,6 @@ public class AmmoKit : Interact
     public int rifleAmmoAmt;
     public int rLAmmoAmt;
 
-    public AudioClip pickUp;
     [SerializeField] Transform fpsCam;
 
     public Rifle rifle;
@@ -51,7 +50,7 @@ public class AmmoKit : Interact
         }
         GameManager.Instance.totalRLAmmoText.text = rL.totalAmmo.ToString();
         
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
+        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUp, fpsCam.position, 0.7f);
 
     }
 

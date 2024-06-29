@@ -1139,6 +1139,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1124736744}
     - target: {fileID: 2031633365464499004, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: checkPointSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b46c912373f15142b44f3d520dc8349, type: 3}
+    - target: {fileID: 2031633365464499004, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: interactionDist
       value: 5
       objectReference: {fileID: 0}
@@ -8272,6 +8276,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f00943a3e0bebe4aa36809e25542699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1466021035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1466021037}
+  - component: {fileID: 1466021036}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1466021036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466021035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8db17b8dee5ce45894e06c447cd1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeObject: {fileID: 8300000, guid: 9aa9f61d6cc0d77448134ad698e5ef62, type: 3}
+  pickUp: {fileID: 8300000, guid: 774e5ff45de59b74d931f97d1f2a7ba7, type: 3}
+  pickUpMedKit: {fileID: 8300000, guid: 492807a09d9922448bff1dd4afc57c0e, type: 3}
+  checkPointSound: {fileID: 8300000, guid: 5b46c912373f15142b44f3d520dc8349, type: 3}
+  gunShot: {fileID: 0}
+  rifleShot: {fileID: 8300000, guid: 6bc67cda0faef6a42a97ff1a49f22295, type: 3}
+  rLShot: {fileID: 8300000, guid: 064a12c38eafd944b9e20e28da7e9cbc, type: 3}
+  gunReload: {fileID: 0}
+  rifleReload: {fileID: 8300000, guid: 322a95b1577ad3d48b2629e8abcee631, type: 3}
+  rLReload: {fileID: 8300000, guid: c4160c0143f1ee145b6861243569089f, type: 3}
+  emptyMag: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
+  playerHit: {fileID: 8300000, guid: 46eee5b383af081419d7b81bb282a8a6, type: 3}
+  playerDie: {fileID: 8300000, guid: f9c070f5cbc8c6b45a1383834b751ac9, type: 3}
+  playerBurn: {fileID: 8300000, guid: 1392191b72541944c81be53c12215c3e, type: 3}
+--- !u!4 &1466021037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466021035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.12512, y: -3.219942, z: 27.10443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1481069003
 Mesh:
   m_ObjectHideFlags: 0
@@ -8833,7 +8895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13040,3 +13102,4 @@ SceneRoots:
   - {fileID: 1157255171}
   - {fileID: 295286532}
   - {fileID: 1232489854}
+  - {fileID: 1466021037}

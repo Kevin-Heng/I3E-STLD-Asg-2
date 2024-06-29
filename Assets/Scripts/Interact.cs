@@ -17,6 +17,7 @@ public class Interact : SceneChanger
     public virtual void InteractObject()
     {       
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUp, GameManager.Instance.fpsCam.position, 0.7f);
     }
     
     public virtual void Interaction()

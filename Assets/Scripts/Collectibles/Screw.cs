@@ -6,7 +6,6 @@ public class Screw : Interact
 {
     bool screwPickedUp;
 
-    public AudioClip pickUp;
     [SerializeField] Transform fpsCam;
 
     public override void InteractObject()
@@ -15,7 +14,6 @@ public class Screw : Interact
         base.InteractObject();
         GameManager.Instance.player.UpdateScrew(screwPickedUp);
 
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
     }
     // Start is called before the first frame update
     void Start()

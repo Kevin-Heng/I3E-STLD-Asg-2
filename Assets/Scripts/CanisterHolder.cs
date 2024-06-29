@@ -12,6 +12,7 @@ public class CanisterHolder : Interact
         if (GameManager.Instance.player.canister)
         {
             canisterOnHolder.SetActive(true);
+            AudioSource.PlayClipAtPoint(AudioManager.Instance.placeObject, GameManager.Instance.fpsCam.position, 1f);
         }
         else
         {

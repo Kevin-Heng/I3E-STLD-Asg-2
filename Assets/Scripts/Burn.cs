@@ -14,14 +14,7 @@ public class Burn : MonoBehaviour
     /// Projectile damage if it hits player
     /// </summary>
     public int burnDamage;
-    /// <summary>
-    /// Audio played when enemy is hit by projectile
-    /// </summary>
-    public AudioClip playerHit;
-    /// <summary>
-    /// Audio played when player dies
-    /// </summary>
-    public AudioClip playerDie;
+
 
 
     public float burnTime;
@@ -62,7 +55,7 @@ public class Burn : MonoBehaviour
             GameManager.Instance.burning = true;
             GameManager.Instance.burningFrame.SetActive(true);
             nextTimeToBurn = Time.time + 1/burnTime;
-            GameManager.Instance.ReducePlayerHp(burnDamage, playerHit, playerDie, GameManager.Instance.fpsCam);
+            GameManager.Instance.ReducePlayerHp(burnDamage, AudioManager.Instance.playerBurn, AudioManager.Instance.playerDie, GameManager.Instance.fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             GameManager.Instance.burning = false;
         }
@@ -78,7 +71,7 @@ public class Burn : MonoBehaviour
         {
             Debug.Log("burn");
             GameManager.Instance.burningFrame.SetActive(true);
-            GameManager.Instance.ReducePlayerHp(burnDamage, playerHit, playerDie, GameManager.Instance.fpsCam);
+            GameManager.Instance.ReducePlayerHp(burnDamage, AudioManager.Instance.playerBurn, AudioManager.Instance.playerDie, GameManager.Instance.fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             yield return new WaitForSeconds(burnInterval);
         }

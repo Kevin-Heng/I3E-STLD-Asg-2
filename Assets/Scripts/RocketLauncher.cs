@@ -70,6 +70,8 @@ public class RocketLauncher : Gun
         if (isEquipped)
         {
             player.GetComponent<Player>().UpdateGun(this);
+            AudioManager.Instance.gunShot = AudioManager.Instance.rLShot;
+            AudioManager.Instance.gunReload = AudioManager.Instance.rLReload;
         }
     }
 }

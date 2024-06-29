@@ -11,7 +11,7 @@ using UnityEngine;
 public class MedKit : Interact
 {
     public int healHpAmt;
-    public AudioClip pickUp;
+
     [SerializeField] Transform fpsCam;
 
     public override void InteractObject()
@@ -36,7 +36,7 @@ public class MedKit : Interact
             GameManager.Instance.playerHp += hpDiff;
             
         }
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.4f);
+        AudioSource.PlayClipAtPoint(AudioManager.Instance.pickUpMedKit, fpsCam.position, 0.4f);
         if(GameManager.Instance.playerHp > 30)
         {
             GameManager.Instance.playerHpText.color = Color.white;

@@ -49,19 +49,6 @@ public class Gun : MonoBehaviour
     /// </summary>
     public bool isReloading = false;
 
-    //Gun audio
-    /// <summary>
-    /// Audio when bullet is shot
-    /// </summary>
-    public AudioClip gunShot;
-    /// <summary>
-    /// Audio when reloading gun
-    /// </summary>
-    public AudioClip gunReload;
-    /// <summary>
-    /// Audio when there is no ammo left in gun
-    /// </summary>
-    public AudioClip emptyMag;
     /// <summary>
     /// Audio sound level for gunShot
     /// </summary>
@@ -113,7 +100,7 @@ public class Gun : MonoBehaviour
             {
                 GameManager.Instance.ReduceAmmo(ref currentAmmo);
                 muzzleFlash.Play();
-                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, gunShotSoundLvl);
+                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
                 GameObject bulletImpact = Instantiate(bulletHit, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //particle effect only appears when it hits an object
                 Destroy(bulletImpact, destroyTime); //remove the variable from hierarchy
                 
@@ -121,7 +108,7 @@ public class Gun : MonoBehaviour
                 {
                     StartCoroutine(Reload()); //reload function 
                 }
-                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
+                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
 
                 DamageEnemy(damage, hitInfo);
             }
@@ -133,12 +120,12 @@ public class Gun : MonoBehaviour
             {
                 GameManager.Instance.ReduceAmmo(ref currentAmmo);
                 muzzleFlash.Play();
-                AudioSource.PlayClipAtPoint(gunShot, fpsCam.position, gunShotSoundLvl);
+                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunShot, fpsCam.position, gunShotSoundLvl);
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function runs
                 }
-                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
+                GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
 
             }
 
@@ -191,7 +178,7 @@ public class Gun : MonoBehaviour
         {
             if (totalAmmo > 0) //reload gun if there is enough ammo
             {
-                AudioSource.PlayClipAtPoint(gunReload, fpsCam.position, 1f);
+                AudioSource.PlayClipAtPoint(AudioManager.Instance.gunReload, fpsCam.position, 1f);
                 isReloading = true; //player is reloading
                 yield return new WaitForSeconds(reloadTime); //pauses the function for the specified reload time, then the code below this statement will run
                 GameManager.Instance.ReloadGun(ref currentAmmo, ref magazineAmmo, ref totalAmmo);
@@ -219,7 +206,7 @@ public class Gun : MonoBehaviour
     public void OutOfAmmo()
     {
         if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(0))
-            GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, emptyMag, fpsCam);
+            GameManager.Instance.NoAmmo(ref currentAmmo, ref totalAmmo, AudioManager.Instance.emptyMag, fpsCam);
     }
 
     // Start is called before the first frame update

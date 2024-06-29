@@ -6,7 +6,6 @@ public class Canister : Interact
 {
     bool canisterPickedUp;
 
-    public AudioClip pickUp;
     [SerializeField] Transform fpsCam;
 
     public override void InteractObject()
@@ -14,9 +13,6 @@ public class Canister : Interact
         canisterPickedUp = true;
         base.InteractObject();
         GameManager.Instance.player.UpdateCanister(canisterPickedUp);
-
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
-
     }
     // Start is called before the first frame update
     void Start()

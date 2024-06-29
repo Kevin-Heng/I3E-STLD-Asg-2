@@ -29,6 +29,8 @@ public class Rifle : Gun
         if (isEquipped)
         {
             player.GetComponent<Player>().UpdateGun(this);
+            AudioManager.Instance.gunShot = AudioManager.Instance.rifleShot;
+            AudioManager.Instance.gunReload = AudioManager.Instance.rifleReload;
         }
 
     }

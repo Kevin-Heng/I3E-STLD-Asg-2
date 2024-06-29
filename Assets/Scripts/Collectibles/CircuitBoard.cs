@@ -6,7 +6,7 @@ public class CircuitBoard : Interact
 {
     bool circuitBoardPickedUp;
 
-    public AudioClip pickUp;
+
     [SerializeField] Transform fpsCam;
 
     public override void InteractObject()
@@ -15,7 +15,6 @@ public class CircuitBoard : Interact
         base.InteractObject();
         GameManager.Instance.player.UpdateCircuitBoard(circuitBoardPickedUp);
 
-        AudioSource.PlayClipAtPoint(pickUp, fpsCam.position, 0.7f);
 
     }
     // Start is called before the first frame update

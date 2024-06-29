@@ -18,14 +18,7 @@ public class Projectile : MonoBehaviour
     /// Projectile damage if it hits player
     /// </summary>
     public int damage;
-    /// <summary>
-    /// Audio played when enemy is hit by projectile
-    /// </summary>
-    public AudioClip playerHit;
-    /// <summary>
-    /// Audio played when player dies
-    /// </summary>
-    public AudioClip playerDie;
+
     /// <summary>
     /// Player camera
     /// </summary>
@@ -40,7 +33,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) //check if projectile hits player
         {
             Destroy(projectile);
-            GameManager.Instance.ReducePlayerHp(damage, playerHit,  playerDie, fpsCam);
+            GameManager.Instance.ReducePlayerHp(damage, AudioManager.Instance.playerHit, AudioManager.Instance.playerDie, fpsCam);
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             GameManager.Instance.bleedingFrame.SetActive(true);
             if(GameManager.Instance.playerHp <= 30)

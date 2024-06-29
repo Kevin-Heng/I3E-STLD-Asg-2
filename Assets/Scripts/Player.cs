@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public Transform checkPoint;
     public bool checkPointSet;
 
+
     public TextMeshProUGUI interactText;
 
     public GameObject pauseScreen;
@@ -99,7 +100,7 @@ public class Player : MonoBehaviour
             else if (currentInteractable.CompareTag("RespawnPoint"))
             {
                 currentInteractable.SetSpawnPoint();
-                Debug.Log("Set spawn");
+                AudioSource.PlayClipAtPoint(AudioManager.Instance.checkPointSound, fpsCam.position, 1f);
             }
             else
             {
@@ -190,8 +191,12 @@ public class Player : MonoBehaviour
             }
             else
             {
-                interactText.text = "";
+                interactText.text = null;
             }
+        }
+        else
+        {
+            interactText.text = null;
         }
 
 
