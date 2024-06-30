@@ -74,34 +74,41 @@ public class AudioManager : MonoBehaviour
 
 
     /// <summary>
-    /// Function to ensure there is only one game manager
+    /// Function to ensure there is only one audio manager
     /// </summary>
     private void Awake()
     {
-        if (Instance == null) //start: no game manager
+        if (Instance == null) //start: no audio manager
         {
-            Instance = this; //set game manager
-            DontDestroyOnLoad(gameObject); //items in game manager are not destroyed in the next scene
+            Instance = this; //set audio manager
+            DontDestroyOnLoad(gameObject); //items in audio manager are not destroyed in the next scene
         }
-        else if (Instance != null && Instance != this) //when enter new scene, new game manager is created. if there is a game manager and the game manager is not the current one
+        else if (Instance != null && Instance != this) //when enter new scene, new audio manager is created. if there is a audio manager and the audio manager is not the current one
         {
             Destroy(gameObject); //destroy the new one
         }
 
     }
 
+    /// <summary>
+    /// Function to adjust the master volume using a slider
+    /// </summary>
     public void ChangeMasterVol()
     {
 
         mainAudioMixer.SetFloat("Master Volume", masterVol.value);
 
     }
-
+    /// <summary>
+    /// Function to adjust the music volume using a slider
+    /// </summary>
     public void ChangeMusicVol()
     {
         mainAudioMixer.SetFloat("Music Volume", musicVol.value);
     }
-
+    /// <summary>
+    /// Function to adjust the sfx volume using a slider
+    /// </summary>
     public void ChangeSFXVol()
     {
         mainAudioMixer.SetFloat("SFX Volume", sfxVol.value);

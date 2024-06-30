@@ -12,6 +12,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("AI")]
     /// <summary>
     /// Enemy Model
     /// </summary>
@@ -25,8 +26,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public LayerMask Player;
 
-    [SerializeField] Transform fpsCam; //player camera
+    [Header("")]
+    /// <summary>
+    /// player camera
+    /// </summary>
+    [SerializeField] Transform fpsCam;
 
+    [Header("Walkpoint")]
     /// <summary>
     /// Enemy walking destination
     /// </summary>
@@ -40,6 +46,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public float walkPointRange;
 
+    [Header("Attack")]
     /// <summary>
     /// Attack cooldown
     /// </summary>
@@ -49,6 +56,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     bool attack;
 
+    [Header("Sight range")]
     /// <summary>
     /// Distance at which enemy spots player
     /// </summary>
@@ -66,6 +74,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public bool playerInAttackRange;
 
+    [Header("Projectile")]
+    /// <summary>
+    /// damage done by projectile to player
+    /// </summary>
+    public int projectileDamage;
     /// <summary>
     /// Projectile when enemy attacks
     /// </summary>
@@ -87,16 +100,21 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public int upwardForce;
 
+    [Header("HP")]
     /// <summary>
     /// Enemy hp
     /// </summary>
     public int enemyHp;
 
+    /// <summary>
+    /// Enemy original hp
+    /// </summary>
     public int originalEnemyHp;
-
+    /// <summary>
+    /// text to update enemy hp
+    /// </summary>
     public TextMeshProUGUI enemyHpText;
 
-    public int projectileDamage;
 
     /// <summary>
     /// To set player and agent variables
@@ -113,19 +131,19 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Patrol()
     {
-        if (!walkPointSet)
+        if (!walkPointSet) //enemy looks for walk point if it is not set
         {
             SearchWalkPoint();
         }
-        if (walkPointSet)
+        if (walkPointSet) //enemy moves to destination after walk point is set
         {
             agent.SetDestination(walkPoint);
         }
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - walkPoint; //difference in distance between enemy and destination
 
         if(distanceToWalkPoint.magnitude < 1f)
         {
-            walkPointSet = false;
+            walkPointSet = false; //reset walk point if difference less than 1
         }
     }
 
@@ -140,7 +158,7 @@ public class Enemy : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ); //enemy destination
         if(Physics.Raycast(walkPoint, -transform.up, 2f)) //check if end destination is on the ground
         {
-            walkPointSet = true;
+            walkPointSet = true; 
         }
 
     }
@@ -149,7 +167,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Chase()
     {
-        agent.SetDestination(player.position); 
+        agent.SetDestination(player.position);  //enemy moves towards player's position
     }
 
     /// <summary>
@@ -157,14 +175,14 @@ public class Enemy : MonoBehaviour
     /// </summary>
     void Attack()
     {
-        agent.SetDestination(transform.position);
+        agent.SetDestination(transform.position); //enemy moves towards player's position
 
         agent.transform.LookAt(player); //front faces player
 
-        if (!attack)
+        if (!attack) //enemy attack
         {
             spawnProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation); //projectile spawns
-            spawnProjectile.GetComponent<Projectile>().damage = projectileDamage;
+            spawnProjectile.GetComponent<Projectile>().damage = projectileDamage; //set damage
 
             Rigidbody projectileRb = spawnProjectile.GetComponent<Rigidbody>(); //access rigidbody component of projectile
 
@@ -183,9 +201,9 @@ public class Enemy : MonoBehaviour
     /// <returns></returns>
     IEnumerator ResetAttack()
     {
+        GameManager.Instance.bleedingFrame.SetActive(false); //bleeding UI turns off
         yield return new WaitForSeconds(timeBetweenAttacks);
         attack = false;
-        GameManager.Instance.bleedingFrame.SetActive(false);
     }
 
 
@@ -194,8 +212,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyHp = originalEnemyHp;
-        enemyHpText.text = enemyHp.ToString() + "/" + originalEnemyHp.ToString();
+        enemyHp = originalEnemyHp; //set enemy hp
+        enemyHpText.text = enemyHp.ToString() + "/" + originalEnemyHp.ToString(); //update enemy hp text
     }
 
     // Update is called once per frame

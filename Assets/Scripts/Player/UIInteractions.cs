@@ -10,14 +10,16 @@ using UnityEngine;
 
 public class UIInteractions : MonoBehaviour
 {
-
+    /// <summary>
+    /// Function to resume game
+    /// </summary>
     public void ResumeGame()
     {
-        Time.timeScale = 1.0f;
-        GameManager.Instance.player.pauseScreen.SetActive(false);
+        Time.timeScale = 1.0f; //resume game time
+        GameManager.Instance.player.pauseScreen.SetActive(false); //hide pause screen panel
+        //hide cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("resume");
     }
 
 

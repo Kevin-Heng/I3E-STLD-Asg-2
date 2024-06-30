@@ -434,15 +434,17 @@ MonoBehaviour:
   destroyTime: 1
   reloadTime: 1.5
   isReloading: 0
-  gunShot: {fileID: 8300000, guid: 6bc67cda0faef6a42a97ff1a49f22295, type: 3}
-  gunReload: {fileID: 8300000, guid: 322a95b1577ad3d48b2629e8abcee631, type: 3}
-  emptyMag: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
   gunShotSoundLvl: 0.07
   damage: 10
-  totalAmmo: 120
-  currentAmmo: 30
+  totalAmmo: 0
+  originalTotalAmmo: 30
+  currentAmmo: 0
   magazineAmmo: 30
   isEquipped: 0
+  ammoIcon: {fileID: 0}
+  maxNumRange: 6
+  medKit: {fileID: 2793339303045683752, guid: 6ef78f5275595ea4fa22e20842483428, type: 3}
+  ammoKit: {fileID: 4062872416025741452, guid: d1b4275bd93137a42bb4c9e75bfe9981, type: 3}
   player: {fileID: 453084650579209855}
 --- !u!1001 &4039272854441745529
 PrefabInstance:
@@ -623,15 +625,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.210205
+      value: -22.210236
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.161317
+      value: 10.804999
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.948788
+      value: -23.948782
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -712,15 +714,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000011444092
+      value: -0.000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.375
+      value: 1.374999
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.000005722046
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -919,19 +921,19 @@ MonoBehaviour:
   destroyTime: 5
   reloadTime: 3
   isReloading: 0
-  gunShot: {fileID: 8300000, guid: 064a12c38eafd944b9e20e28da7e9cbc, type: 3}
-  gunReload: {fileID: 8300000, guid: c4160c0143f1ee145b6861243569089f, type: 3}
-  emptyMag: {fileID: 8300000, guid: 5e5f000acd095944897de2f69cdc0904, type: 3}
   gunShotSoundLvl: 0.25
   damage: 50
-  totalAmmo: 24
-  currentAmmo: 4
+  totalAmmo: 0
+  originalTotalAmmo: 4
+  currentAmmo: 0
   magazineAmmo: 4
   isEquipped: 0
+  ammoIcon: {fileID: 0}
+  maxNumRange: 6
+  medKit: {fileID: 2793339303045683752, guid: 6ef78f5275595ea4fa22e20842483428, type: 3}
+  ammoKit: {fileID: 4062872416025741452, guid: d1b4275bd93137a42bb4c9e75bfe9981, type: 3}
   changeSpeed: 4
   player: {fileID: 453084650579209855}
-  radius: 0
-  maxDamage: 0
 --- !u!4 &7799690841888114162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a63b5418fb06ea44bba7f3d840480e61, type: 3}
@@ -963,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: MoveSpeed
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: JumpHeight
@@ -971,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
@@ -991,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.786317
+      value: 9.43
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1111,6 +1113,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 5126527961139664760}
+  interactionDist: 5
+  shooting: 0
+  checkPoint: {fileID: 0}
+  checkPointSet: 0
+  interactText: {fileID: 0}
+  objective1: {fileID: 0}
+  objective2: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  isPaused: 0
+  circuitBoard: 0
+  screw: 0
+  canister: 0
+  metalBoard: 0
 --- !u!4 &937451010987979973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

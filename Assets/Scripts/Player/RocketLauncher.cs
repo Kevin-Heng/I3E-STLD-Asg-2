@@ -21,9 +21,6 @@ public class RocketLauncher : Gun
     /// </summary>
     [SerializeField] GameObject player;
 
-    Gun gun;
-
-
     /// <summary>
     /// Function to change player speed depending on the gun equipped
     /// </summary>
@@ -58,8 +55,8 @@ public class RocketLauncher : Gun
     // Start is called before the first frame update
     void Start()
     {
-        currentAmmo = magazineAmmo;
-        totalAmmo = originalTotalAmmo;
+        currentAmmo = magazineAmmo; //set current ammo to magazine ammo
+        totalAmmo = originalTotalAmmo; //set total ammo to original total ammo
         isEquipped = false; //rocket launcher is unequipped at the start
         this.gameObject.SetActive(false); //hide rocket launcher
     }
@@ -67,11 +64,11 @@ public class RocketLauncher : Gun
     // Update is called once per frame
     void Update()
     {
-        if (isEquipped)
+        if (isEquipped) //rocket launcher equipped
         {
             player.GetComponent<Player>().UpdateGun(this);
-            AudioManager.Instance.gunShot = AudioManager.Instance.rLShot;
-            AudioManager.Instance.gunReload = AudioManager.Instance.rLReload;
+            AudioManager.Instance.gunShot = AudioManager.Instance.rLShot; //set audio when rocket launcher shoots
+            AudioManager.Instance.gunReload = AudioManager.Instance.rLReload; //set audio when rocket launcher reloads
         }
     }
 }

@@ -18,31 +18,57 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager Instance;
 
-    //----------------------------------- Player ----------------------------------------// 
+    /// <summary>
+    /// player camera
+    /// </summary>
+    public Transform fpsCam;
+
+    [Header("Player")]
     /// <summary>
     /// To reference Player class on Player Capsule
     /// </summary>
     public Player player;
 
+    /// <summary>
+    /// Player hp
+    /// </summary>
     public int playerHp;
+    /// <summary>
+    /// Original player hp
+    /// </summary>
     public int originalPlayerHp = 100;
-
+    /// <summary>
+    /// To show player hp
+    /// </summary>
     public TextMeshProUGUI playerHpText;
-    public TextMeshProUGUI errorText;
 
-    public Transform fpsCam;
-
+    [Header("UI")]
+    /// <summary>
+    /// death screen panel
+    /// </summary>
     public GameObject deathScreen;
-
+    /// <summary>
+    /// player ui panel
+    /// </summary>
     public GameObject playerUI;
-
+    /// <summary>
+    /// burning UI 
+    /// </summary>
     public GameObject burningFrame;
+    /// <summary>
+    /// check if player is currently burning
+    /// </summary>
     public bool burning;
-
+    /// <summary>
+    /// bleeding UI
+    /// </summary>
     public GameObject bleedingFrame;
-
+    /// <summary>
+    /// Start point in scene index 1
+    /// </summary>
     public Transform startPoint;
-    //----------------------------------- Gun ----------------------------------------// 
+
+    [Header("Gun")]
     /// <summary>
     /// UI text for current ammo in the rifle's magazine
     /// </summary>
@@ -68,11 +94,6 @@ public class GameManager : MonoBehaviour
     /// To refernce RocketLauncher class in rocket launcher game object
     /// </summary>
     public RocketLauncher rL;
-
-
-
-    //--------------------------------------------------------------------------------// 
-
 
     /// <summary>
     /// Function to ensure there is only one game manager
@@ -118,21 +139,26 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Death screen panel to check if player wants to restart or return to main menu
+    /// </summary>
     public void DeathScreen()
     {
-        AudioManager.Instance.deathMusic.Play();
-        AudioManager.Instance.mainMenu.Stop();
+        AudioManager.Instance.deathMusic.Play(); //play death music
+        AudioManager.Instance.mainMenu.Stop(); //stop main menu music
 
+        //remove damage effcts
         burningFrame.SetActive(false);
         burning = false;
         bleedingFrame.SetActive(false);
-
+        //turn on deaeth screen panel
         deathScreen.gameObject.SetActive(true);
-
+        //cursor is visible
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
+        //reset player hp
         playerHp = originalPlayerHp;
+        //pause game time
         Time.timeScale = 0;
     }
 
@@ -197,7 +223,9 @@ public class GameManager : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------//
-
+    /// <summary>
+    /// Function to swap to rifle
+    /// </summary>
     public void EquipWeapon1()
     {
         if (!rifle.isEquipped && rL.isEquipped && !rL.isReloading) //check if rifle is not equipped, rocket launcher is equipped and player presses 1
@@ -221,7 +249,9 @@ public class GameManager : MonoBehaviour
             rL.ChangeSpeed(player); //change player speed
         }
     }
-
+    /// <summary>
+    /// Function to equip rocket launcher
+    /// </summary>
     public void EquipWeapon2()
     {
         if (rifle.isEquipped && !rL.isEquipped && !rifle.isReloading)

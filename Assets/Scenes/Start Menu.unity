@@ -1290,7 +1290,7 @@ MonoBehaviour:
     \nreactor at the bridge of your ship. You will need a circuit board, screws,
     metal \nboards and a fully filled energy casnister to fix the ship and leave
     the planet. \nHowever, there will be enemies who will get in your way so watch
-    out!!"
+    out!! Also\nRemember to set your checkpoints when possible!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e167675dceffb1c4380b2c965a40ffeb, type: 2}
   m_sharedMaterial: {fileID: -1558262750025669529, guid: e167675dceffb1c4380b2c965a40ffeb, type: 2}

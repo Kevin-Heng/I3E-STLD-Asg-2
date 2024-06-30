@@ -22,23 +22,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 314.66245
+      value: -0.9249878
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: -1.5619999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.3235836
+      value: 1.1230001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
       propertyPath: m_Name
       value: energyCanister empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3fb2d1d23e7c9e4eafca8ab0f561227, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -122,6 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 0
-  startSceneIndex: 0
   spawnObject: {fileID: 0}
   fpsCam: {fileID: 0}

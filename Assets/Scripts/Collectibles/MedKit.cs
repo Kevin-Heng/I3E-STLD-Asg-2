@@ -10,38 +10,48 @@ using UnityEngine;
 
 public class MedKit : Interact
 {
+    /// <summary>
+    /// how much hp does a med kit heal
+    /// </summary>
     public int healHpAmt;
 
+    /// <summary>
+    /// player camera
+    /// </summary>
     [SerializeField] Transform fpsCam;
 
+    /// <summary>
+    /// Function to pick up med kit
+    /// </summary>
     public override void InteractObject()
     {
-        if (GameManager.Instance.playerHp < GameManager.Instance.originalPlayerHp)
+        if (GameManager.Instance.playerHp < GameManager.Instance.originalPlayerHp) //check if current player hp is lower than original player hp
         {
             HealPlayer();
             base.InteractObject();
         }
     }
+    /// <summary>
+    /// Function to calculate how much hp to heal player
+    /// </summary>
     public void HealPlayer()
     {
-        int hpDiff = GameManager.Instance.originalPlayerHp - GameManager.Instance.playerHp; 
-        if(hpDiff >= healHpAmt)
+        int hpDiff = GameManager.Instance.originalPlayerHp - GameManager.Instance.playerHp; //difference in original hp and current hp 
+        if(hpDiff >= healHpAmt) //difference is more than what one med kit can heal
         {
-            Debug.Log("total heal: " + hpDiff);
-            GameManager.Instance.playerHp += healHpAmt;
+            GameManager.Instance.playerHp += healHpAmt; //increase player hp by max heal of a med kit
         }
-        else //98 only need +2
+        else //difference is less than what one med kit can heal
         {
-            Debug.Log(hpDiff);
-            GameManager.Instance.playerHp += hpDiff;
+            GameManager.Instance.playerHp += hpDiff; //increase player hp by the difference
             
         }
-        AudioManager.Instance.pickUpMedKit.Play();
-        if(GameManager.Instance.playerHp > 30)
+        AudioManager.Instance.pickUpMedKit.Play(); //audio source for when med kit is picked up
+        if(GameManager.Instance.playerHp > 30) //change text colour to white if player is not in danger
         {
             GameManager.Instance.playerHpText.color = Color.white;
         }
-        GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
+        GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString(); //update player hp text 
 
     }
 

@@ -424,16 +424,16 @@ MonoBehaviour:
     m_Bits: 8
   fpsCam: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
-  timeBetweenAttacks: 2
-  sightRange: 15
-  attackRange: 12
+  walkPointRange: 40
+  timeBetweenAttacks: 3
+  sightRange: 30
+  attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
   projectile: {fileID: 7192845124812347348, guid: ef84c21ec411bc246b2fff4445545899, type: 3}
   projectileSpawn: {fileID: 30910076027034210}
-  forwardForce: 20
-  upwardForce: 3
+  forwardForce: 32
+  upwardForce: 4
   enemyHp: 0
   originalEnemyHp: 50
   enemyHpText: {fileID: 1561550983544261289}
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 398a0fe8e0e23b74ea9313915680d227, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2423d55cb889825408561b4d1bdd627f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8725563111826370516
 GameObject:

@@ -43,6 +43,7 @@ public class SceneChanger : MonoBehaviour
             //turn off death music
             AudioManager.Instance.deathMusic.Stop();
 
+            //restart main menu music
             AudioManager.Instance.mainMenu.Stop();
             AudioManager.Instance.mainMenu.Play();
 
@@ -54,12 +55,13 @@ public class SceneChanger : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
+            //turn off burn UI and death screen
             GameManager.Instance.deathScreen.SetActive(false);
             GameManager.Instance.burningFrame.SetActive(false);
                      
         }
 
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneIndex); //load scene
 
     }
 
@@ -68,34 +70,41 @@ public class SceneChanger : MonoBehaviour
     /// </summary>
     public void StartScene()
     {
-        Debug.Log("Starting");
+        //hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        if(GameManager.Instance != null)
+
+        if(GameManager.Instance != null) //game is opened again without exiting
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 1.0f; //resume game time
+
+            //Turn on Player UI, hide pause and death screen
             GameManager.Instance.playerUI.SetActive(true);
             GameManager.Instance.deathScreen.SetActive(false);
             GameManager.Instance.player.pauseScreen.SetActive(false);
 
+            //Set player position and rotation to start point position and rotation
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;
             GameManager.Instance.player.gameObject.transform.eulerAngles = GameManager.Instance.startPoint.transform.eulerAngles;
             Physics.SyncTransforms();
 
             //--------------------------------------------- Reset player info --------------------------------------------------------------------------------
+            //Player hp is back to full
             GameManager.Instance.playerHp = GameManager.Instance.originalPlayerHp;
             GameManager.Instance.playerHpText.text = GameManager.Instance.playerHp.ToString();
             GameManager.Instance.playerHpText.color = Color.white;
 
+            //set current rifle ammo to magazine rifle ammo
             GameManager.Instance.rifle.currentAmmo = GameManager.Instance.rifle.magazineAmmo;
             GameManager.Instance.currentRifleAmmoText.text = GameManager.Instance.rifle.currentAmmo.ToString(); //update rifle ammo 
             GameManager.Instance.currentRifleAmmoText.color = Color.white;
 
+            //set total rifle ammo to the original amount
             GameManager.Instance.rifle.totalAmmo = GameManager.Instance.rifle.originalTotalAmmo;
             GameManager.Instance.totalRifleAmmoText.text = GameManager.Instance.rifle.totalAmmo.ToString(); //update rifle total ammo
             GameManager.Instance.totalRifleAmmoText.color = Color.white;
 
-
+            //set current rocket launcher ammo to magazine rocket launcher ammo
             GameManager.Instance.rL.currentAmmo = GameManager.Instance.rL.magazineAmmo;
             GameManager.Instance.currentRLAmmoText.text = GameManager.Instance.rL.currentAmmo.ToString(); //update rocket launcher ammo
             GameManager.Instance.currentRLAmmoText.color = Color.white;
@@ -105,7 +114,7 @@ public class SceneChanger : MonoBehaviour
 
             
         }
-        SceneManager.LoadScene(startSceneIndex);
+        SceneManager.LoadScene(startSceneIndex); //load scene
 
     }
 

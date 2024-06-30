@@ -12,23 +12,31 @@ using UnityEngine.SceneManagement;
 
 public class Interact : SceneChanger
 {
+    /// <summary>
+    /// GameObject to set spawn point
+    /// </summary>
     public GameObject spawnObject;
 
+    /// <summary>
+    /// Function for player to interact with objects
+    /// </summary>
     public virtual void InteractObject()
     {       
         Destroy(gameObject);
         AudioManager.Instance.pickUp.Play();
     }
-    
-    public virtual void Interaction()
-    {
-        Debug.Log("Interact");
-    }
+
+    /// <summary>
+    /// Function change scenes 
+    /// </summary>
     public override void ChangeScene()
     {
         base.ChangeScene();
     }
     
+    /// <summary>
+    /// Function to set spawn point for player
+    /// </summary>
     public void SetSpawnPoint()
     {
         GameManager.Instance.player.CheckPoint(spawnObject);

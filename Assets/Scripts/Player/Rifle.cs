@@ -19,18 +19,18 @@ public class Rifle : Gun
     void Start()
     {
         isEquipped = true; //rifle is equipped at the start
-        currentAmmo = magazineAmmo;
-        totalAmmo = originalTotalAmmo;
+        currentAmmo = magazineAmmo; //set current ammo to amount of ammo in a magazine
+        totalAmmo = originalTotalAmmo; //set total ammo to original total ammo
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isEquipped)
+        if (isEquipped) //rifle equipped
         {
             player.GetComponent<Player>().UpdateGun(this);
-            AudioManager.Instance.gunShot = AudioManager.Instance.rifleShot;
-            AudioManager.Instance.gunReload = AudioManager.Instance.rifleReload;
+            AudioManager.Instance.gunShot = AudioManager.Instance.rifleShot; //set audio when rifle shoots
+            AudioManager.Instance.gunReload = AudioManager.Instance.rifleReload; //set audio when rifle reloads
         }
 
     }
