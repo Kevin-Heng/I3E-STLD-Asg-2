@@ -42,7 +42,7 @@ public class Burn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0) //check if player is not currently burning and hp more than 0
+            if (!GameManager.Instance.burning && GameManager.Instance.playerHp > 0 && GameManager.Instance.playerHp != GameManager.Instance.originalPlayerHp) //check if player is not currently burning and hp more than 0
             {
                 BurnDamage();
             }

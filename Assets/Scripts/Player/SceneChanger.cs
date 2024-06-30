@@ -187,6 +187,9 @@ public class SceneChanger : MonoBehaviour
         //turn off death music
         AudioManager.Instance.deathMusic.Stop();
 
+        //turn on main menu music
+        AudioManager.Instance.mainMenu.Play();
+
 
 
         if (SceneManager.GetActiveScene().buildIndex == 1) //if player dies inside spaceship, check point is automatically set to start point

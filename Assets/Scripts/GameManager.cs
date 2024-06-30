@@ -174,6 +174,7 @@ public class GameManager : MonoBehaviour
         playerHp = originalPlayerHp;
         //pause game time
         Time.timeScale = 0;
+        Debug.Log(Time.timeScale.ToString());
         //turn off any warnings
         warningText.text = null;
         warningTextBox.SetActive(false);
