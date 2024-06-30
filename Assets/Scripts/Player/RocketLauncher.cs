@@ -59,6 +59,15 @@ public class RocketLauncher : Gun
         totalAmmo = originalTotalAmmo; //set total ammo to original total ammo
         isEquipped = false; //rocket launcher is unequipped at the start
         this.gameObject.SetActive(false); //hide rocket launcher
+        GameManager.Instance.currentRLAmmoText.text = currentAmmo.ToString(); //update rocket launcher ammo
+        GameManager.Instance.totalRLAmmoText.text = totalAmmo.ToString();//update rocket launcher total ammo
+        GameManager.Instance.currentRLAmmoText.color = Color.white;
+        GameManager.Instance.totalRLAmmoText.color = Color.white;
+
+        //hide rocket launcher UI
+        GameManager.Instance.currentRLAmmoText.enabled = false;
+        GameManager.Instance.totalRLAmmoText.enabled = false;
+        ammoIcon.SetActive(false);
     }
 
     // Update is called once per frame

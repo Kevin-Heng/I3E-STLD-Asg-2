@@ -21,6 +21,8 @@ public class Rifle : Gun
         isEquipped = true; //rifle is equipped at the start
         currentAmmo = magazineAmmo; //set current ammo to amount of ammo in a magazine
         totalAmmo = originalTotalAmmo; //set total ammo to original total ammo
+        GameManager.Instance.currentRifleAmmoText.text = currentAmmo.ToString(); //update rifle ammo 
+        GameManager.Instance.totalRifleAmmoText.text = totalAmmo.ToString(); //update rifle total ammo
     }
 
     // Update is called once per frame

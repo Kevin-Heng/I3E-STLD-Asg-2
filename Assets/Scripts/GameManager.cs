@@ -298,18 +298,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentRifleAmmoText.text = rifle.currentAmmo.ToString(); //update rifle ammo 
-        totalRifleAmmoText.text = rifle.totalAmmo.ToString(); //update rifle total ammo
-
-        currentRLAmmoText.text = rL.currentAmmo.ToString(); //update rocket launcher ammo
-        totalRLAmmoText.text = rL.totalAmmo.ToString();//update rocket launcher total ammo
-        currentRLAmmoText.color = Color.white;
-        totalRLAmmoText.color = Color.white;
-
-        //hide rocket launcher UI
-        currentRLAmmoText.enabled = false;
-        totalRLAmmoText.enabled = false;
-        rL.ammoIcon.SetActive(false);
 
         playerHp = originalPlayerHp;
         playerHpText.text = playerHp.ToString();
