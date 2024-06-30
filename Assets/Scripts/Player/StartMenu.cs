@@ -173,6 +173,7 @@ public class StartMenu : UIInteractions
     /// </summary>
     public void ExitGame()
     {
+        Debug.Log("Exit");
         //Close game
         Application.Quit();
     }

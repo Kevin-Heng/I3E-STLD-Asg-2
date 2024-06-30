@@ -9758,8 +9758,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIInteractions, Assembly-CSharp
+      - m_Target: {fileID: 761754479}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
