@@ -96,6 +96,14 @@ public class Player : MonoBehaviour
     /// </summary>
     public bool canister;
     /// <summary>
+    /// Check if canister is placed on holder
+    /// </summary>
+    public bool canisterPlaced;
+    /// <summary>
+    /// check if full canister is picked up
+    /// </summary>
+    public bool fullCanister;
+    /// <summary>
     /// check if metal board is picked up
     /// </summary>
     public bool metalBoard;
@@ -174,7 +182,22 @@ public class Player : MonoBehaviour
     {
         totemPlaced = placed;
     }
-
+    /// <summary>
+    /// Update if canister is placed
+    /// </summary>
+    /// <param name="placed"></param>
+    public void UpdateCanisterPlaced(bool placed)
+    {
+        canisterPlaced = placed;
+    }
+    /// <summary>
+    /// Update if full canister is picked up
+    /// </summary>
+    /// <param name="placed"></param>
+    public void FullCanister(bool pickUp)
+    {
+        fullCanister = pickUp;
+    }
 
     /// <summary>
     /// Function to update which gun is currently equipped

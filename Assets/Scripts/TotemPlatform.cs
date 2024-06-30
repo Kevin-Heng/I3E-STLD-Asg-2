@@ -9,9 +9,18 @@ using UnityEngine;
 
 public class TotemPlatform : Interact
 {
+    /// <summary>
+    /// check if totem was placed
+    /// </summary>
     bool totemPlaced;
+    /// <summary>
+    /// Totem game object
+    /// </summary>
     public GameObject totem;
 
+    /// <summary>
+    /// function to place totem
+    /// </summary>
     public override void PlaceItem()
     {
         if (GameManager.Instance.player.totem)

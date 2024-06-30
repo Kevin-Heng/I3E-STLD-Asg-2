@@ -56,8 +56,12 @@ public class Interact : SceneChanger
         GameManager.Instance.warningText.text = null;
     }
 
+    /// <summary>
+    /// Function to place down item
+    /// </summary>
     public virtual void PlaceItem()
     {
+        AudioManager.Instance.placeObject.Play();
     }
     // Start is called before the first frame update
     void Start()

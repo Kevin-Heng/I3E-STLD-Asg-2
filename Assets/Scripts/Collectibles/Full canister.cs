@@ -1,26 +1,27 @@
 /*
  * Author: Kevin Heng
  * Date: 30/06/2024
- * Description: The Totem class is used for player to pick up the totem
+ * Description: The FullCanister class is used to update if full canister have been picked up by player
  */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Totem : Interact
+public class Fullcanister : Interact
 {
     /// <summary>
-    /// boolean to check if totem is picked up
+    /// check if full canister is picked up
     /// </summary>
-    bool totem;
+    bool fullCanister;
     /// <summary>
-    /// Function to pick up totem
+    /// function to pick up full canister
     /// </summary>
     public override void InteractObject()
     {
-        totem = true;
         base.InteractObject();
-        GameManager.Instance.player.UpdateTotem(totem); //update boolean in player script
+        fullCanister = true;
+        GameManager.Instance.player.FullCanister(fullCanister);
     }
     // Start is called before the first frame update
     void Start()
