@@ -65,6 +65,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource deathMusic;
     public AudioSource mainMenu;
+    public AudioSource winMusic;
 
     public AudioClip playerBurn;
 

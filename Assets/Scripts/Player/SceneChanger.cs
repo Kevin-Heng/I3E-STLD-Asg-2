@@ -44,8 +44,9 @@ public class SceneChanger : MonoBehaviour
 
             GameManager.Instance.winPanel.SetActive(false);
 
-            //turn off death music
+            //turn off death and win music
             AudioManager.Instance.deathMusic.Stop();
+            AudioManager.Instance.winMusic.Stop();
 
             //restart main menu music
             AudioManager.Instance.mainMenu.Stop();
@@ -53,11 +54,14 @@ public class SceneChanger : MonoBehaviour
 
 
         }
-        else if(sceneIndex == 1)
+        else if(sceneIndex == 1) //when returning to ship, check if player has all items
         {
             if(GameManager.Instance.player.circuitBoard && GameManager.Instance.player.screw && GameManager.Instance.player.metalBoard && GameManager.Instance.player.fullCanister)
             {
                 GameManager.Instance.winPanel.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                AudioManager.Instance.winMusic.Play();
             }
         }
         else
@@ -124,7 +128,23 @@ public class SceneChanger : MonoBehaviour
             //turn off death music
             AudioManager.Instance.deathMusic.Stop();
 
-            
+            //reset boolean values
+            GameManager.Instance.player.circuitBoard = false;
+            GameManager.Instance.player.screw = false;
+            GameManager.Instance.player.canister = false;
+            GameManager.Instance.player.canisterPlaced = false;
+            GameManager.Instance.player.fullCanister = false;
+            GameManager.Instance.player.metalBoard = false;
+            GameManager.Instance.player.totem = false;
+            GameManager.Instance.player.totemPlaced = false;
+
+            //reset objectives
+            GameManager.Instance.player.objective1.text = "Collect empty energy canister in ship";
+            GameManager.Instance.player.objective2.text = "Collect a circuit board";
+            GameManager.Instance.player.objective3.text = "Collect screws";
+            GameManager.Instance.player.objective4.text = "Collect metal boards";
+
+
         }
         SceneManager.LoadScene(startSceneIndex); //load scene
 

@@ -127,7 +127,22 @@ public class Gun : MonoBehaviour
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function 
-                    OutOfAmmo();
+                    if (totalAmmo == 0) //no ammo at all
+                    {
+                        AudioManager.Instance.emptyMag.Play(); //play audio source
+                        if (isEquipped)
+                        {
+                            //current and total ammo text set to red to warn player
+                            GameManager.Instance.currentRifleAmmoText.color = Color.red;
+                            GameManager.Instance.totalRifleAmmoText.color = Color.red;
+                        }
+                        else
+                        {
+                            //current and total ammo text set to red to warn player
+                            GameManager.Instance.currentRLAmmoText.color = Color.red;
+                            GameManager.Instance.totalRLAmmoText.color = Color.red;
+                        }
+                    }
                 }
 
                 DamageEnemy(damage, hitInfo); //damage enemy
@@ -145,7 +160,22 @@ public class Gun : MonoBehaviour
                 if (currentAmmo == 0) //magazine is empty
                 {
                     StartCoroutine(Reload()); //reload function runs
-                    OutOfAmmo();
+                    if (totalAmmo == 0) //no ammo at all
+                    {
+                        AudioManager.Instance.emptyMag.Play(); //play audio source
+                        if (isEquipped)
+                        {
+                            //current and total ammo text set to red to warn player
+                            GameManager.Instance.currentRifleAmmoText.color = Color.red;
+                            GameManager.Instance.totalRifleAmmoText.color = Color.red;
+                        }
+                        else
+                        {
+                            //current and total ammo text set to red to warn player
+                            GameManager.Instance.currentRLAmmoText.color = Color.red;
+                            GameManager.Instance.totalRLAmmoText.color = Color.red;
+                        }
+                    }
                 }
                 
 
