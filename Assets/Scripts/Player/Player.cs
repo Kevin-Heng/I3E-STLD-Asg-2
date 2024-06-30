@@ -88,9 +88,17 @@ public class Player : MonoBehaviour
     /// </summary>
     public bool canister;
     /// <summary>
-    /// check if metal board is picked up;
+    /// check if metal board is picked up
     /// </summary>
     public bool metalBoard;
+    /// <summary>
+    /// Check if totem/special collectible is picked up
+    /// </summary>
+    public bool totem;
+    /// <summary>
+    /// check if totem is placed on platform
+    /// </summary>
+    public bool totemPlaced;
 
     /// <summary>
     /// Update if circuit board is picked up
@@ -127,6 +135,15 @@ public class Player : MonoBehaviour
     public void UpdateMetalBoard(bool pickedUp)
     {
         metalBoard = pickedUp;
+    }
+
+    /// <summary>
+    /// Update if totem is picked up
+    /// </summary>
+    /// <param name="pickedUp">boolean from totem script</param>
+    public void UpdateTotem(bool pickedUp)
+    {
+        totem = pickedUp;
     }
 
 

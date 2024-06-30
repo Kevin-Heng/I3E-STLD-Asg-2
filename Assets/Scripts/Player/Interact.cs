@@ -39,8 +39,21 @@ public class Interact : SceneChanger
     /// </summary>
     public void SetSpawnPoint()
     {
+        GameManager.Instance.warningTextBox.SetActive(true);
+        GameManager.Instance.warningText.text = "Check point set";
         GameManager.Instance.player.CheckPoint(spawnObject);
         Debug.Log(spawnObject.transform.name);
+    }
+
+    /// <summary>
+    /// function to hide text after interactions
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator HideText()
+    {
+        yield return new WaitForSeconds(5);
+        GameManager.Instance.warningTextBox.SetActive(false);
+        GameManager.Instance.warningText.text = null;
     }
 
     // Start is called before the first frame update

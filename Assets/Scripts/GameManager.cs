@@ -64,6 +64,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public GameObject bleedingFrame;
     /// <summary>
+    /// Image for warning text
+    /// </summary>
+    public GameObject warningTextBox;
+    /// <summary>
+    /// wraning text when player cannot access something
+    /// </summary>
+    public TextMeshProUGUI warningText;
+
+    [Header("start")]
+    /// <summary>
     /// Start point in scene index 1
     /// </summary>
     public Transform startPoint;

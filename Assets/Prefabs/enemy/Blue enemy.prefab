@@ -382,12 +382,13 @@ MonoBehaviour:
     m_Bits: 8
   fpsCam: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
+  walkPointRange: 40
   timeBetweenAttacks: 2
-  sightRange: 15
-  attackRange: 12
+  sightRange: 30
+  attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
+  projectileDamage: 10
   projectile: {fileID: 7192845124812347348, guid: ef84c21ec411bc246b2fff4445545899, type: 3}
   projectileSpawn: {fileID: 7934131837349822573}
   forwardForce: 24
@@ -395,7 +396,6 @@ MonoBehaviour:
   enemyHp: 0
   originalEnemyHp: 100
   enemyHpText: {fileID: 6569698463649797940}
-  projectileDamage: 10
 --- !u!1 &5899752416495350103
 GameObject:
   m_ObjectHideFlags: 0
