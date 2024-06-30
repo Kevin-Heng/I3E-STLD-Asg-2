@@ -63,6 +63,14 @@ public class Player : MonoBehaviour
     /// Text to see if player completes objective 2
     /// </summary>
     public TextMeshProUGUI objective2;
+    /// <summary>
+    /// Text to see if player completes objective 3
+    /// </summary>
+    public TextMeshProUGUI objective3;
+    /// <summary>
+    /// Text to see if player completes objective 4
+    /// </summary>
+    public TextMeshProUGUI objective4;
 
     [Header("Pause")]
     /// <summary>
@@ -107,6 +115,10 @@ public class Player : MonoBehaviour
     public void UpdateCircuitBoard(bool pickedUp)
     {
         circuitBoard = pickedUp;
+        if (circuitBoard)
+        {
+            objective2.text = "<s> Collect a circuit board </s>";
+        }
     }
     /// <summary>
     /// Update if screw is picked up
@@ -115,6 +127,10 @@ public class Player : MonoBehaviour
     public void UpdateScrew(bool pickedUp)
     {
         screw = pickedUp;
+        if (screw)
+        {
+            objective3.text = "<s> Collect screws </s>";
+        }
     }
     /// <summary>
     /// Update if canister is picked up
@@ -135,6 +151,10 @@ public class Player : MonoBehaviour
     public void UpdateMetalBoard(bool pickedUp)
     {
         metalBoard = pickedUp;
+        if (metalBoard)
+        {
+            objective4.text = "<s> Collect metal boards </s>";
+        }
     }
 
     /// <summary>
@@ -144,6 +164,15 @@ public class Player : MonoBehaviour
     public void UpdateTotem(bool pickedUp)
     {
         totem = pickedUp;
+        Debug.Log("totem picked up" + totem);
+    }
+    /// <summary>
+    /// Update if totem is placed
+    /// </summary>
+    /// <param name="placed"></param>
+    public void UpdateTotemPlaced(bool placed)
+    {
+        totemPlaced = placed;
     }
 
 
@@ -189,6 +218,10 @@ public class Player : MonoBehaviour
             {
                 currentInteractable.SetSpawnPoint();
                 AudioManager.Instance.checkPointSound.Play(); //audio plays when check point is set
+            }
+            else if(currentInteractable.CompareTag("Place item"))
+            {
+                currentInteractable.PlaceItem();
             }
         }
 

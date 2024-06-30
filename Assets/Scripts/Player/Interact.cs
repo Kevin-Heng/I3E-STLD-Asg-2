@@ -41,8 +41,8 @@ public class Interact : SceneChanger
     {
         GameManager.Instance.warningTextBox.SetActive(true);
         GameManager.Instance.warningText.text = "Check point set";
+        StartCoroutine(HideText());
         GameManager.Instance.player.CheckPoint(spawnObject);
-        Debug.Log(spawnObject.transform.name);
     }
 
     /// <summary>
@@ -56,6 +56,9 @@ public class Interact : SceneChanger
         GameManager.Instance.warningText.text = null;
     }
 
+    public virtual void PlaceItem()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {

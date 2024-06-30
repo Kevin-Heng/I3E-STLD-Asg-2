@@ -201,8 +201,8 @@ public class Enemy : MonoBehaviour
     /// <returns></returns>
     IEnumerator ResetAttack()
     {
-        GameManager.Instance.bleedingFrame.SetActive(false); //bleeding UI turns off
         yield return new WaitForSeconds(timeBetweenAttacks);
+        GameManager.Instance.bleedingFrame.SetActive(false); //bleeding UI turns off
         attack = false;
     }
 

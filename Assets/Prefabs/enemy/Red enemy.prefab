@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 713070485805988071}
   - component: {fileID: 6264090791412815141}
   - component: {fileID: 9051233436673322830}
+  - component: {fileID: 5319658976392637097}
   m_Layer: 0
   m_Name: Red enemy
   m_TagString: Enemy
@@ -430,6 +431,7 @@ MonoBehaviour:
   attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
+  projectileDamage: 5
   projectile: {fileID: 7192845124812347348, guid: ef84c21ec411bc246b2fff4445545899, type: 3}
   projectileSpawn: {fileID: 30910076027034210}
   forwardForce: 32
@@ -437,7 +439,33 @@ MonoBehaviour:
   enemyHp: 0
   originalEnemyHp: 50
   enemyHpText: {fileID: 1561550983544261289}
-  projectileDamage: 5
+--- !u!54 &5319658976392637097
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566982882491771903}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &5686465475233438525
 GameObject:
   m_ObjectHideFlags: 0

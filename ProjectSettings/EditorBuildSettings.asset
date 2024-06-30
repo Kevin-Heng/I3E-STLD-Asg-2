@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Area 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Inside house.unity
-    guid: 59c6d2256a78ae9469a79f55ee6a68ac
-  - enabled: 1
     path: Assets/Scenes/Inside volcano.unity
     guid: de1dcfd05d0d5d949866efba026481bf
   m_configObjects:

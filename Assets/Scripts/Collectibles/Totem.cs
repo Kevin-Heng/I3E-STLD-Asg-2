@@ -12,6 +12,7 @@ public class Totem : Interact
     bool totem;
     public override void InteractObject()
     {
+        totem = true;
         base.InteractObject();
         GameManager.Instance.player.UpdateTotem(totem);
     }
