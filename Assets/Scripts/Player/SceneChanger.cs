@@ -42,6 +42,8 @@ public class SceneChanger : MonoBehaviour
 
             GameManager.Instance.player.pauseScreen.SetActive(false);
 
+            GameManager.Instance.winPanel.SetActive(false);
+
             //turn off death music
             AudioManager.Instance.deathMusic.Stop();
 
@@ -50,6 +52,13 @@ public class SceneChanger : MonoBehaviour
             AudioManager.Instance.mainMenu.Play();
 
 
+        }
+        else if(sceneIndex == 1)
+        {
+            if(GameManager.Instance.player.circuitBoard && GameManager.Instance.player.screw && GameManager.Instance.player.metalBoard && GameManager.Instance.player.fullCanister)
+            {
+                GameManager.Instance.winPanel.SetActive(true);
+            }
         }
         else
         {
@@ -84,6 +93,7 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.playerUI.SetActive(true);
             GameManager.Instance.deathScreen.SetActive(false);
             GameManager.Instance.player.pauseScreen.SetActive(false);
+            GameManager.Instance.winPanel.SetActive(false);
 
             //Set player position and rotation to start point position and rotation
             GameManager.Instance.player.gameObject.transform.position = GameManager.Instance.startPoint.transform.position;

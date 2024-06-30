@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
     /// wraning text when player cannot access something
     /// </summary>
     public TextMeshProUGUI warningText;
+    /// <summary>
+    /// Panel when player completes game
+    /// </summary>
+    public GameObject winPanel;
 
     [Header("start")]
     /// <summary>
