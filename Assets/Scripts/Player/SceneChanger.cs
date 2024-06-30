@@ -8,9 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements.Experimental;
 
 public class SceneChanger : MonoBehaviour
 {
+    [Header("Scene index")]
     /// <summary>
     /// To set scene number for next area
     /// </summary>
@@ -182,5 +184,6 @@ public class SceneChanger : MonoBehaviour
             }
         }
     }
+
 
 }
